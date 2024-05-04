@@ -140,6 +140,7 @@ public class AddDaoTao extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         HoatDong x = new HoatDong();
+        boolean flag = false;
         try {
             if(dsHDDT.isEmpty()){
                 x.setMaHD("HD1");
@@ -154,15 +155,19 @@ public class AddDaoTao extends javax.swing.JDialog {
             x.setThoiGian(txtThoiGian.getText());
             x.setMoTa(txtMoTa.getText());
             if(txtSoLuongTV.getText().length() == 0){
+                flag = true;
                 throw new Exception("Số lượng thành viên không được để trống");
             }
             x.setSoThanhVien(Integer.parseInt(txtSoLuongTV.getText()));
             if(txtKinhPhi.getText().length() == 0){
+                                flag = true;
                 throw new Exception("Kinh phí không được để trống");
             }
             x.setKinhPhi(Double.parseDouble(txtKinhPhi.getText()));
             //z.tongQuy -= Double.parseDouble(txtKinhPhi.getText());
-            home.addHD(x);
+            if(flag == false){
+                 home.addHD(x);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

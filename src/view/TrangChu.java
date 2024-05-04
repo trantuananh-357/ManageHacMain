@@ -611,7 +611,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Tên sự kiện", "Đánh giá", "Mô tả", "Số lượng thành viên", "Địa điểm", "Thời gian ", "Chi Phí"
+                "Mã Sự Kiện", "Tên sự kiện", "Đánh giá", "Mô tả", "Số lượng thành viên", "Địa điểm", "Thời gian ", "Chi Phí"
             }
         ));
         jScrollPane3.setViewportView(tblTT);
@@ -670,21 +670,18 @@ public class TrangChu extends javax.swing.JFrame implements View {
         MEdiaLayout.setHorizontalGroup(
             MEdiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MEdiaLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(MEdiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MEdiaLayout.createSequentialGroup()
-                        .addComponent(jScrollPane3)
-                        .addContainerGap())
-                    .addGroup(MEdiaLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTongThanhVienTT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtTongChiPhiTT, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40))))
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+            .addGroup(MEdiaLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtTongThanhVienTT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtTongChiPhiTT, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
             .addGroup(MEdiaLayout.createSequentialGroup()
                 .addGap(228, 228, 228)
                 .addComponent(themTT, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -728,7 +725,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Tên hoạt động", "Thời gian", "Địa điểm", "Mô tả ", "Số lượng thành viên", "Kinh Phí"
+                "Mã Hoạt Động", "Tên hoạt động", "Thời gian", "Địa điểm", "Mô tả ", "Số lượng thành viên", "Kinh Phí"
             }
         ));
         jScrollPane4.setViewportView(tblHDDT);
@@ -1526,13 +1523,16 @@ public class TrangChu extends javax.swing.JFrame implements View {
             JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
         }
         else{
-            int isCheckYesNo = JOptionPane.showConfirmDialog(null,
-                "Bạn có thật sự muốn xóa?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
-            if (isCheckYesNo == 0) {
-                listHD.remove(vitri);
+//            int isCheckYesNo = JOptionPane.showConfirmDialog(null,
+//                "Bạn có thật sự muốn xóa?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
+//            if (isCheckYesNo == 0) {
+                if(new Dao().removeTraining(tblHDDT.getValueAt(vitri, 0).toString())){
+                    System.out.println(tblHDDT.getValueAt(vitri, 0).toString());
+                    listHD.remove(vitri);
+                }
                 showData(listHD, modelHDDT);
                 JOptionPane.showMessageDialog(rootPane, "Xóa thanh cong!");
-            }
+//            }
         }
     }//GEN-LAST:event_xoaDTActionPerformed
 
@@ -1981,6 +1981,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     public void addCSVC(CoSoVC cs) {
         if(new Dao().addInfras(cs)){
              listCSVC.add(cs);
+             
         }
         this.showData(listCSVC, modelCSVC);
         showDataCSVC(); 
@@ -2031,6 +2032,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     public void addHD(HoatDong a) {
         if(new Dao().addTraining(a)){
             listHD.add(a);
+           JOptionPane.showMessageDialog(this, "Thêm thành công hoạt động đào tạo mới!");
         }
         showData(listHD, modelHDDT);
         showDataHDDT();
@@ -2118,7 +2120,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 HoatDong z = (HoatDong) t;
                 if (z.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
                     model.addRow(new Object[]{
-                        z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi()
+                       z.getMaHD(), z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi()
                     });
                 }
             }
@@ -2126,7 +2128,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 HoatDong a = (HoatDong) t;
                 if (a.getLoaiHD().equalsIgnoreCase("Hoat dong Truyen Thong")) {
                     model.addRow(new Object[]{
-                        a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi()
+                        a.getMaHD(), a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi()
                     });
                 }
             }
