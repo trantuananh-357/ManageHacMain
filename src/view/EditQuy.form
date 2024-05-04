@@ -56,7 +56,7 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="168" max="32767" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -85,8 +85,8 @@
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btsua" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bthuybo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btsua" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="bthuybo" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
           </Group>

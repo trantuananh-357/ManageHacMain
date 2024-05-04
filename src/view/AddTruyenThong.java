@@ -35,7 +35,6 @@ public class AddTruyenThong extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         txttenSK = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         txtSL = new javax.swing.JTextField();
         txtdiaDiem = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -74,9 +73,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
 
         jLabel1.setText("Tên sự kiện");
 
-        jLabel6.setText("Số lượng thành viên");
-
-        jLabel2.setText("tham gia :");
+        jLabel6.setText("Số lượng thành viên: ");
 
         jLabel8.setText("Địa điểm :");
 
@@ -97,19 +94,14 @@ public class AddTruyenThong extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(175, 175, 175)
-                        .addComponent(ThemBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(289, 289, 289)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(339, Short.MAX_VALUE))
+                .addGap(175, 175, 175)
+                .addComponent(ThemBtn)
+                .addContainerGap(505, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(HuyBobtn, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(179, 179, 179))
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -124,20 +116,16 @@ public class AddTruyenThong extends javax.swing.JDialog {
                         .addComponent(txtDG))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtSL))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGap(61, 61, 61)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtthoiGian, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
-                                .addComponent(txtdiaDiem)
-                                .addComponent(txtchiPhi))))
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel6))
+                    .addGap(2, 2, 2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtSL)
+                        .addComponent(txtthoiGian, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                        .addComponent(txtdiaDiem)
+                        .addComponent(txtchiPhi))
                     .addContainerGap()))
         );
 
@@ -148,12 +136,10 @@ public class AddTruyenThong extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(jLabel13)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 224, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ThemBtn)
-                    .addComponent(HuyBobtn))
+                    .addComponent(ThemBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(HuyBobtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -185,7 +171,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
                                         .addComponent(jLabel10)
                                         .addComponent(txtchiPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel4))
-                                    .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGap(0, 122, Short.MAX_VALUE))
                                 .addComponent(txtDG)))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(txtdiaDiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -304,7 +290,6 @@ public class AddTruyenThong extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

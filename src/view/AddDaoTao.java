@@ -71,9 +71,9 @@ public class AddDaoTao extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(87, 87, 87)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
@@ -90,11 +90,10 @@ public class AddDaoTao extends javax.swing.JDialog {
                             .addComponent(txtSoLuongTV)
                             .addComponent(txtKinhPhi)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
                         .addComponent(jButton1)
-                        .addGap(149, 149, 149)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +124,8 @@ public class AddDaoTao extends javax.swing.JDialog {
                     .addComponent(txtKinhPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
         );
 
@@ -140,6 +139,7 @@ public class AddDaoTao extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         HoatDong x = new HoatDong();
+        boolean flag = false;
         try {
             if(dsHDDT.isEmpty()){
                 x.setMaHD("HD1");
@@ -154,15 +154,19 @@ public class AddDaoTao extends javax.swing.JDialog {
             x.setThoiGian(txtThoiGian.getText());
             x.setMoTa(txtMoTa.getText());
             if(txtSoLuongTV.getText().length() == 0){
+                flag = true;
                 throw new Exception("Số lượng thành viên không được để trống");
             }
             x.setSoThanhVien(Integer.parseInt(txtSoLuongTV.getText()));
             if(txtKinhPhi.getText().length() == 0){
+                                flag = true;
                 throw new Exception("Kinh phí không được để trống");
             }
             x.setKinhPhi(Double.parseDouble(txtKinhPhi.getText()));
             //z.tongQuy -= Double.parseDouble(txtKinhPhi.getText());
-            home.addHD(x);
+            if(flag == false){
+                 home.addHD(x);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

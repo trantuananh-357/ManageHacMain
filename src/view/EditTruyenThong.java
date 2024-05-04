@@ -78,7 +78,6 @@ public class EditTruyenThong extends javax.swing.JDialog {
         SuaBtn = new javax.swing.JButton();
         HuyBoBtn = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,8 +118,6 @@ public class EditTruyenThong extends javax.swing.JDialog {
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("SỬA ĐỔI SỰ KIỆN - TRUYỀN THÔNG");
 
-        jLabel2.setText("tham gia :");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,14 +155,10 @@ public class EditTruyenThong extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(178, 178, 178)
                         .addComponent(SuaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
+                        .addGap(97, 97, 97)
                         .addComponent(HuyBoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(258, 258, 258))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {txtSLTV, txtchiPhi, txtdiaDiem, txtthoiGian});
@@ -183,9 +176,7 @@ public class EditTruyenThong extends javax.swing.JDialog {
                     .addComponent(jLabel6)
                     .addComponent(txttenSK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSLTV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,10 +199,10 @@ public class EditTruyenThong extends javax.swing.JDialog {
                                     .addComponent(txtchiPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtdanhGia, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+                            .addComponent(txtdanhGia, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SuaBtn)
+                            .addComponent(SuaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(HuyBoBtn))
                         .addGap(32, 32, 32))
                     .addGroup(layout.createSequentialGroup()
@@ -328,7 +319,6 @@ public class EditTruyenThong extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

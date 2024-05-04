@@ -163,6 +163,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         jPanel15 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        refreshBtn = new javax.swing.JButton();
         Spend = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableQuanLyChiTieu = new javax.swing.JTable();
@@ -733,7 +734,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Tên sự kiện", "Đánh giá", "Mô tả", "Số lượng thành viên", "Địa điểm", "Thời gian ", "Chi Phí"
+                "Mã Sự Kiện", "Tên sự kiện", "Đánh giá", "Mô tả", "Số lượng thành viên", "Địa điểm", "Thời gian ", "Chi Phí"
             }
         ));
         jScrollPane3.setViewportView(tblTT);
@@ -847,7 +848,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Tên hoạt động", "Thời gian", "Địa điểm", "Mô tả ", "Số lượng thành viên", "Kinh Phí"
+                "Mã Hoạt Động", "Tên hoạt động", "Thời gian", "Địa điểm", "Mô tả ", "Số lượng thành viên", "Kinh Phí"
             }
         ));
         jScrollPane4.setViewportView(tblHDDT);
@@ -921,6 +922,13 @@ public class TrangChu extends javax.swing.JFrame implements View {
             .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TraningLayout = new javax.swing.GroupLayout(Traning);
         Traning.setLayout(TraningLayout);
         TraningLayout.setHorizontalGroup(
@@ -941,8 +949,15 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addGap(94, 94, 94)
                         .addComponent(suaDT)
                         .addGap(82, 82, 82)
+<<<<<<< HEAD
                         .addComponent(xoaDT)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 603, Short.MAX_VALUE)
+=======
+                        .addComponent(xoaDT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addComponent(refreshBtn)))
+                .addGap(18, 18, 18)
+>>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
                 .addGroup(TraningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addGroup(TraningLayout.createSequentialGroup()
@@ -977,8 +992,14 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addComponent(suaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xoaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE)
+=======
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 573, Short.MAX_VALUE)
+>>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
                 .addComponent(jButton3)
                 .addGap(27, 27, 27))
         );
@@ -1645,13 +1666,16 @@ public class TrangChu extends javax.swing.JFrame implements View {
             JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
         }
         else{
-            int isCheckYesNo = JOptionPane.showConfirmDialog(null,
-                "Bạn có thật sự muốn xóa?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
-            if (isCheckYesNo == 0) {
-                listHD.remove(vitri);
+//            int isCheckYesNo = JOptionPane.showConfirmDialog(null,
+//                "Bạn có thật sự muốn xóa?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
+//            if (isCheckYesNo == 0) {
+                if(new Dao().removeTraining(tblHDDT.getValueAt(vitri, 0).toString())){
+                    System.out.println(tblHDDT.getValueAt(vitri, 0).toString());
+                    listHD.remove(vitri);
+                }
                 showData(listHD, modelHDDT);
                 JOptionPane.showMessageDialog(rootPane, "Xóa thanh cong!");
-            }
+//            }
         }
     }//GEN-LAST:event_xoaDTActionPerformed
 
@@ -1862,6 +1886,10 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        showDataHDDT();
+    }//GEN-LAST:event_refreshBtnActionPerformed
     
     void setColor(JPanel panel){
         panel.setBackground(new Color(242, 242, 242));
@@ -2003,6 +2031,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JRadioButton rbtnNu;
     private javax.swing.JRadioButton rbtnTruongBan;
     private javax.swing.JRadioButton rbtsoluong;
+    private javax.swing.JButton refreshBtn;
     private javax.swing.JPanel spend;
     private javax.swing.JButton suaCSVC;
     private javax.swing.JButton suaDT;
@@ -2114,6 +2143,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     public void addCSVC(CoSoVC cs) {
         if(new Dao().addInfras(cs)){
              listCSVC.add(cs);
+             
         }
         this.showData(listCSVC, modelCSVC);
         showDataCSVC(); 
@@ -2164,6 +2194,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     public void addHD(HoatDong a) {
         if(new Dao().addTraining(a)){
             listHD.add(a);
+           JOptionPane.showMessageDialog(this, "Thêm thành công hoạt động đào tạo mới!");
         }
         showData(listHD, modelHDDT);
         showDataHDDT();
@@ -2251,7 +2282,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 HoatDong z = (HoatDong) t;
                 if (z.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
                     model.addRow(new Object[]{
-                        z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi()
+                       z.getMaHD(), z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi()
                     });
                 }
             }
@@ -2259,7 +2290,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 HoatDong a = (HoatDong) t;
                 if (a.getLoaiHD().equalsIgnoreCase("Hoat dong Truyen Thong")) {
                     model.addRow(new Object[]{
-                        a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi()
+                        a.getMaHD(), a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi()
                     });
                 }
             }

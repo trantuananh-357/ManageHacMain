@@ -6,8 +6,12 @@
 package view;
 
 import Model.Quy;
+<<<<<<< HEAD
 //import controller.ControllerImp;
 import java.text.ParseException;
+=======
+ import java.text.ParseException;
+>>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -118,7 +122,7 @@ public class EditQuy extends javax.swing.JDialog {
                             .addComponent(cbbhoatdong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtthoigian)
                             .addComponent(txtchiphi))))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,8 +145,8 @@ public class EditQuy extends javax.swing.JDialog {
                     .addComponent(jLabel4))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btsua)
-                    .addComponent(bthuybo))
+                    .addComponent(btsua, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bthuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47))
         );
 

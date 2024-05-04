@@ -1039,7 +1039,8 @@
                     <Component class="javax.swing.JTable" name="tblTT">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="0">
+                          <Table columnCount="8" rowCount="0">
+                            <Column editable="true" title="M&#xe3; S&#x1ef1; Ki&#x1ec7;n" type="java.lang.Object"/>
                             <Column editable="true" title="T&#xea;n s&#x1ef1; ki&#x1ec7;n" type="java.lang.Object"/>
                             <Column editable="true" title="&#x110;&#xe1;nh gi&#xe1;" type="java.lang.Object"/>
                             <Column editable="true" title="M&#xf4; t&#x1ea3;" type="java.lang.Object"/>
@@ -1051,6 +1052,11 @@
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -1215,9 +1221,15 @@
                                   <Component id="suaDT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                                   <Component id="xoaDT" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="148" max="32767" attributes="0"/>
+                                  <Component id="refreshBtn" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+<<<<<<< HEAD
                           <EmptySpace pref="603" max="32767" attributes="0"/>
+=======
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+>>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
@@ -1261,6 +1273,7 @@
                               <Component id="xoaDT" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="jTextField1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                               <Component id="jButton1" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
+                              <Component id="refreshBtn" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="586" max="32767" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
@@ -1280,7 +1293,8 @@
                     <Component class="javax.swing.JTable" name="tblHDDT">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="6" rowCount="0">
+                          <Table columnCount="7" rowCount="0">
+                            <Column editable="true" title="M&#xe3; Ho&#x1ea1;t &#x110;&#x1ed9;ng" type="java.lang.Object"/>
                             <Column editable="true" title="T&#xea;n ho&#x1ea1;t &#x111;&#x1ed9;ng" type="java.lang.Object"/>
                             <Column editable="true" title="Th&#x1edd;i gian" type="java.lang.Object"/>
                             <Column editable="true" title="&#x110;&#x1ecb;a &#x111;i&#x1ec3;m" type="java.lang.Object"/>
@@ -1291,6 +1305,11 @@
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
@@ -1433,6 +1452,14 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="refreshBtn">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Refresh"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshBtnActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="Spend">

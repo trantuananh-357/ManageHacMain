@@ -222,7 +222,7 @@ public class Dao {
         return false;
     }
      public boolean removeMedia(String maHD){
-        String delete = "DELETE FROM tblHoatDong Where tenHD = ?";
+        String delete = "DELETE FROM tblHoatDong Where maHD = ?";
         try
         {
             PreparedStatement ps = conn.prepareStatement(delete);
