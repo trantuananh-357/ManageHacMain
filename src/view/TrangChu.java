@@ -149,6 +149,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         jPanel15 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        refreshBtn = new javax.swing.JButton();
         Spend = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableQuanLyChiTieu = new javax.swing.JTable();
@@ -799,6 +800,13 @@ public class TrangChu extends javax.swing.JFrame implements View {
             .addComponent(jLabel38, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout TraningLayout = new javax.swing.GroupLayout(Traning);
         Traning.setLayout(TraningLayout);
         TraningLayout.setHorizontalGroup(
@@ -819,8 +827,10 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addGap(94, 94, 94)
                         .addComponent(suaDT)
                         .addGap(82, 82, 82)
-                        .addComponent(xoaDT)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                        .addComponent(xoaDT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addComponent(refreshBtn)))
+                .addGap(18, 18, 18)
                 .addGroup(TraningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addGroup(TraningLayout.createSequentialGroup()
@@ -855,7 +865,8 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addComponent(suaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xoaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 573, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(27, 27, 27))
@@ -1743,6 +1754,10 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        showDataHDDT();
+    }//GEN-LAST:event_refreshBtnActionPerformed
     
     void setColor(JPanel panel){
         panel.setBackground(new Color(242, 242, 242));
@@ -1870,6 +1885,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JRadioButton rbtnNu;
     private javax.swing.JRadioButton rbtnTruongBan;
     private javax.swing.JRadioButton rbtsoluong;
+    private javax.swing.JButton refreshBtn;
     private javax.swing.JPanel spend;
     private javax.swing.JButton suaCSVC;
     private javax.swing.JButton suaDT;
