@@ -24,8 +24,8 @@ public class Dao {
     public Dao(){
          try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            String url= "jdbc:sqlserver://DESKTOP-35N6B48\\SQLEXPRESS:1433;databaseName=HacClub";
-            String url= "jdbc:sqlserver://TUANANHVU\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
+            String url= "jdbc:sqlserver://DESKTOP-35N6B48\\SQLEXPRESS:1433;databaseName=HacClub";
+//            String url= "jdbc:sqlserver://TUANANHVU\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
             String username = "sa";
             String password ="123456789";
             conn = DriverManager.getConnection(url, username, password);

@@ -6,12 +6,9 @@
 package view;
 
 import Model.Quy;
-<<<<<<< HEAD
 //import controller.ControllerImp;
 import java.text.ParseException;
-=======
  import java.text.ParseException;
->>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
