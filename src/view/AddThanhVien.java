@@ -1,6 +1,7 @@
 package view;
 
 import Model.ThanhVien;
+import controller.Dao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import javax.swing.JOptionPane;
 public class AddThanhVien extends javax.swing.JDialog {
 
     private TrangChu home;
-    private List<ThanhVien> listTV;
+    private List<ThanhVien> listTV = new Dao().getUser();
 
     public AddThanhVien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -338,11 +339,10 @@ public class AddThanhVien extends javax.swing.JDialog {
         if (isOk) {
             ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh);
             String chuoi = tv.getMaTV().toUpperCase();
-            listTV = new ArrayList<>();
             int ktra = 0;
             for (ThanhVien x : listTV) {
-                String chuoi1 = x.getMaTV().toUpperCase();
-                if (chuoi1.equals(chuoi)) {
+                String maUser = x.getMaTV().toUpperCase();
+                if (maUser.equals(chuoi)) {
                     JOptionPane.showMessageDialog(rootPane, "Mã thành viên này đã tồn tại , vui lòng kiểm tra lại !");
                     ktra = 1;
                     break;

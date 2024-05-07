@@ -15,8 +15,6 @@ public class AddTruyenThong extends javax.swing.JDialog {
     private TrangChu home;
 
     ArrayList<HoatDong> dsHDTT = new Dao().getMedia();
-    Quy z;
-
     public AddTruyenThong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

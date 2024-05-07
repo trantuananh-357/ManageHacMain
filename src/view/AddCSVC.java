@@ -2,6 +2,7 @@ package view;
 
 import Model.CoSoVC;
 import Model.Quy;
+import controller.Dao;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class AddCSVC extends javax.swing.JDialog {
 
 private TrangChu home;
     
-    List<CoSoVC> dsCSVC = new ArrayList<>();
+    List<CoSoVC> dsCSVC = new Dao().getInfras();
    
     public AddCSVC(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

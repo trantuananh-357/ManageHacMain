@@ -163,7 +163,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         themDT = new javax.swing.JButton();
         suaDT = new javax.swing.JButton();
         xoaDT = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtFindInfra = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
@@ -939,9 +939,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtFindInfra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtFindInfraActionPerformed(evt);
             }
         });
 
@@ -1005,7 +1005,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFindInfra, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(TraningLayout.createSequentialGroup()
@@ -1035,7 +1035,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addGap(18, 18, 18)
                         .addGroup(TraningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFindInfra, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(TraningLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
@@ -1638,27 +1638,38 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         showDataHDDT();
-        jTextField1.setText("");
+        txtFindInfra.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        listTKHD.removeAll(listTKHD);
+        boolean flag = false;
+        if(txtFindInfra.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(rootPane,
+                "Vui Lòng nhập tên hoạt động cần tìm kiếm!");
+        }
+        else{
+            flag = true;
+        }
+        if(flag){
+            listTKHD.removeAll(listTKHD);
         for(HoatDong item : listHD){
-            if (item.getTenHD().toLowerCase().contains(jTextField1.getText().toLowerCase())
-                ||(item.getThoiGian().toLowerCase().contains(jTextField1.getText().toLowerCase()))
-                ||(item.getDiaDiem().toLowerCase().contains(jTextField1.getText().toLowerCase()))
+            if (item.getTenHD().toLowerCase().contains(txtFindInfra.getText().toLowerCase())
+                ||(item.getThoiGian().toLowerCase().contains(txtFindInfra.getText().toLowerCase()))
+                ||(item.getDiaDiem().toLowerCase().contains(txtFindInfra.getText().toLowerCase()))
             ) {
                 listTKHD.add(item);
 
             }
+            }
+            showDataDTSearch();
         }
-        showDataDTSearch();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtFindInfraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFindInfraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtFindInfraActionPerformed
 
     private void xoaDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaDTActionPerformed
         int vitri = tblHDDT.getSelectedRow();
@@ -2107,7 +2118,6 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel media;
@@ -2132,6 +2142,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JButton themchitieu;
     private javax.swing.JPanel train;
     private javax.swing.JTextField txtChiPhiHDDT;
+    private javax.swing.JTextField txtFindInfra;
     private javax.swing.JTextField txtThanhVienHDDT;
     private javax.swing.JTextField txtTimKiemThanhVien;
     private javax.swing.JTextField txtTimMedia;
