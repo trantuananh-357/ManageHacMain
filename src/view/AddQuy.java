@@ -7,13 +7,13 @@ package view;
 
 import Model.Quy;
 import controller.Dao;
-import java.awt.Choice;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Date;
-import java.util.List;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -22,9 +22,9 @@ import javax.swing.JOptionPane;
  */
 public class AddQuy extends javax.swing.JDialog {
 
-    private TrangChu home; 
+    private TrangChu home;
     private ArrayList<Quy> dsQuy;
-    
+
     public AddQuy(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -33,7 +33,6 @@ public class AddQuy extends javax.swing.JDialog {
         dsQuy = new Dao().getSpend();
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -150,7 +149,7 @@ public class AddQuy extends javax.swing.JDialog {
         Double chitieu = Double.parseDouble(txtchiphi.getText());
         int maxLength = 30;
         String pattern = "^[a-zA-Z0-9]+$";
-        boolean isOk = true; 
+        boolean isOk = true;
         if (ma.trim().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Không được để trống mã chi tiêu!");
             isOk = false;
@@ -160,8 +159,7 @@ public class AddQuy extends javax.swing.JDialog {
         } else if (!ma.matches(pattern)) {
             JOptionPane.showMessageDialog(rootPane, "Mã chi tiêu chỉ được chứa chữ cái và số!");
             isOk = false;
-        }
-        else if (ten.length() == 0) {
+        } else if (ten.length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Không được để trống Tên hoạt động chi tiêu!");
             isOk = false;
         } else if (ten.length() > maxLength) {
@@ -170,8 +168,7 @@ public class AddQuy extends javax.swing.JDialog {
         } else if (ten.matches("^[a-zA-Z] + $")) {
             JOptionPane.showMessageDialog(rootPane, "Tên hoạt động chi tiêu chỉ được chứa chữ cái!");
             isOk = false;
-        }
-        else if (ngay.trim().length() == 0) {
+        } else if (ngay.trim().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập thời gian chi tiêu!");
             isOk = false;
         } else if (ngay.trim().length() != 0) {
@@ -181,26 +178,25 @@ public class AddQuy extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Thời gian không hợp lệ!VD:10/11/2002");
                 isOk = false;
             }
-        }
-        else if (chitieu.toString().trim().length() == 0) {
+        } else if (chitieu.toString().trim().length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập chi phí!");
             isOk = false;
         }
-        if(isOk){
+        if (isOk) {
             Quy q = new Quy(ma, ten, ngay, chitieu);
             String chuoi = q.getMaQuy().toUpperCase();
-            
+
             int ktra = 0;
-            for(Quy item: dsQuy){
-               String chuoi1 = item.getMaQuy().toUpperCase();
-               if(chuoi1.equals(chuoi)){
-                   JOptionPane.showMessageDialog(rootPane, "Mã chi tiêu này đã tồn tại!");
-                   ktra =1;
-                   break;
-               }
-               
+            for (Quy item : dsQuy) {
+                String chuoi1 = item.getMaQuy().toUpperCase();
+                if (chuoi1.equals(chuoi)) {
+                    JOptionPane.showMessageDialog(rootPane, "Mã chi tiêu này đã tồn tại!");
+                    ktra = 1;
+                    break;
+                }
+
             }
-            if(ktra == 0){
+            if (ktra == 0) {
                 home.addQuy(q);
                 JOptionPane.showMessageDialog(rootPane, "Thêm mới thành công");
             }

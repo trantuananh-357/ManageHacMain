@@ -6,72 +6,69 @@ import Model.Quy;
 import Model.ThanhVien;
 import controller.Dao;
 import java.awt.Color;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
+
 import javax.swing.table.DefaultTableModel;
 
 public class TrangChu extends javax.swing.JFrame implements View {
-    private int indexThanhVien;
-    private int indexQuy;
-    private ArrayList<ThanhVien> listTV;
-    private ArrayList<ThanhVien> listTVTimKiem;
-    private ArrayList<CoSoVC> listCSVC;
-    private List<CoSoVC> listTK;
-    private List<CoSoVC> listCSVCSort;
-    private ArrayList<HoatDong> listHD;
-    private List<HoatDong> listTKHD;
-    private List<HoatDong> listHDTT;
-    
-    private List<Quy> listQuy;
-    private List<Quy> listTKCT;
-    
-    private final DefaultTableModel modelTV;
-    private final DefaultTableModel modelCSVC;
-    private final DefaultTableModel modelHDDT;
-    private final DefaultTableModel modelHDTT;
-    private final DefaultTableModel modelQuy;
-    
+        private int indexThanhVien;
+        private int indexQuy;
+        private ArrayList<ThanhVien> listTV;
+        private ArrayList<ThanhVien> listTVTimKiem;
+        private ArrayList<CoSoVC> listCSVC;
+        private List<CoSoVC> listTK;
+        private List<CoSoVC> listCSVCSort;
+        private ArrayList<HoatDong> listHD;
+        private List<HoatDong> listTKHD;
+        private List<HoatDong> listHDTT;
 
-    DecimalFormat df = new DecimalFormat("#,###.000");
+        private List<Quy> listQuy;
+        private List<Quy> listTKCT;
 
-    public TrangChu() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        this.setTitle("Trang chủ");
-        listTV = new Dao().getUser();
-        listCSVC = new Dao().getInfras();
-        listCSVCSort = new ArrayList<>();
-        listTK = new ArrayList<>();
-        listTKHD = new ArrayList<>();//traning
-        listHD = new Dao().getTraining(); ////Dao
-        listHDTT = new Dao().getMedia();
-        listQuy = new Dao().getSpend();
-        listTKCT = new ArrayList<>();//media
-        modelTV = (DefaultTableModel) tblThanhVien.getModel();
-        modelCSVC = (DefaultTableModel) tblCSVC.getModel();
-        modelHDDT = (DefaultTableModel) tblHDDT.getModel();
-        modelHDTT = (DefaultTableModel) tblTT.getModel();
-        modelQuy = (DefaultTableModel) tableQuanLyChiTieu.getModel();
-        showDataThanhVien();
-        showDataQuy();
-        showDataCSVC();
-        showDataHDTT();
-        showDataHDDT();
-        
-    }
+        private final DefaultTableModel modelTV;
+        private final DefaultTableModel modelCSVC;
+        private final DefaultTableModel modelHDDT;
+        private final DefaultTableModel modelHDTT;
+        private final DefaultTableModel modelQuy;
 
-    @SuppressWarnings("unchecked")
+        DecimalFormat df = new DecimalFormat("#,###.000");
+
+        public TrangChu() {
+                initComponents();
+                this.setLocationRelativeTo(null);
+                this.setTitle("Trang chủ");
+                listTV = new Dao().getUser();
+                listCSVC = new Dao().getInfras();
+                listCSVCSort = new ArrayList<>();
+                listTK = new ArrayList<>();
+                listTKHD = new ArrayList<>();// traning
+                listHD = new Dao().getTraining(); //// Dao
+                listHDTT = new Dao().getMedia();
+                listQuy = new Dao().getSpend();
+                listTKCT = new ArrayList<>();// media
+                modelTV = (DefaultTableModel) tblThanhVien.getModel();
+                modelCSVC = (DefaultTableModel) tblCSVC.getModel();
+                modelHDDT = (DefaultTableModel) tblHDDT.getModel();
+                modelHDTT = (DefaultTableModel) tblTT.getModel();
+                modelQuy = (DefaultTableModel) tableQuanLyChiTieu.getModel();
+                showDataThanhVien();
+                showDataQuy();
+                showDataCSVC();
+                showDataHDTT();
+                showDataHDDT();
+
+        }
+
+        @SuppressWarnings("unchecked")
+        // <editor-fold defaultstate="collapsed" desc="Generated
+        // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -327,7 +324,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                                 .addComponent(jLabel10)
                                 .addGap(34, 34, 34)
                                 .addComponent(jLabel12)))))
-                .addContainerGap(377, Short.MAX_VALUE))
+                .addContainerGap(703, Short.MAX_VALUE))
         );
         HomeLayout.setVerticalGroup(
             HomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -496,7 +493,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                             .addGroup(UserLayout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel8)))
-                        .addGap(0, 428, Short.MAX_VALUE))
+                        .addGap(0, 757, Short.MAX_VALUE))
                     .addComponent(jScrollPane2)
                     .addGroup(UserLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -793,27 +790,29 @@ public class TrangChu extends javax.swing.JFrame implements View {
         MEdiaLayout.setHorizontalGroup(
             MEdiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MEdiaLayout.createSequentialGroup()
-                .addComponent(jScrollPane3)
-                .addContainerGap())
-            .addGroup(MEdiaLayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtTongThanhVienTT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTongChiPhiTT, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(MEdiaLayout.createSequentialGroup()
                 .addGap(228, 228, 228)
                 .addComponent(themTT, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(113, 113, 113)
                 .addComponent(suaTT)
                 .addGap(132, 132, 132)
                 .addComponent(xoaTT)
-                .addGap(0, 665, Short.MAX_VALUE))
+                .addGap(0, 991, Short.MAX_VALUE))
             .addComponent(jPanel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(MEdiaLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addGroup(MEdiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MEdiaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())
+                    .addGroup(MEdiaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtTongThanhVienTT, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtTongChiPhiTT, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40))))
         );
 
         MEdiaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {suaTT, themTT, xoaTT});
@@ -949,15 +948,10 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addGap(94, 94, 94)
                         .addComponent(suaDT)
                         .addGap(82, 82, 82)
-<<<<<<< HEAD
-                        .addComponent(xoaDT)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 603, Short.MAX_VALUE)
-=======
                         .addComponent(xoaDT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                         .addComponent(refreshBtn)))
-                .addGap(18, 18, 18)
->>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 655, Short.MAX_VALUE)
                 .addGroup(TraningLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addGroup(TraningLayout.createSequentialGroup()
@@ -992,14 +986,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addComponent(suaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xoaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE)
-=======
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 573, Short.MAX_VALUE)
->>>>>>> ad6fb40485c0db7ddc92c159d352f9547669daf0
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE)
                 .addComponent(jButton3)
                 .addGap(27, 27, 27))
         );
@@ -1118,7 +1107,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addComponent(xoachitieu)
                         .addGap(33, 33, 33)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 874, Short.MAX_VALUE)
                         .addComponent(bttimkiemchitieu, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txttimkiemchitieu, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1407,8 +1396,8 @@ public class TrangChu extends javax.swing.JFrame implements View {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane7)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1419,520 +1408,514 @@ public class TrangChu extends javax.swing.JFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void frameViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frameViewMouseClicked
+        private void frameViewMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_frameViewMouseClicked
 
-    }//GEN-LAST:event_frameViewMouseClicked
+        }// GEN-LAST:event_frameViewMouseClicked
 
-    private void frameViewAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_frameViewAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_frameViewAncestorAdded
+        private void frameViewAncestorAdded(javax.swing.event.AncestorEvent evt) {// GEN-FIRST:event_frameViewAncestorAdded
+                // TODO add your handling code here:
+        }// GEN-LAST:event_frameViewAncestorAdded
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
-        showDataThanhVien();
-        txtTimKiemThanhVien.setText("");
-    }//GEN-LAST:event_btnRefreshActionPerformed
+        private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRefreshActionPerformed
+                // TODO add your handling code here:
+                showDataThanhVien();
+                txtTimKiemThanhVien.setText("");
+        }// GEN-LAST:event_btnRefreshActionPerformed
 
-    private void btnLocTheoTieuChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocTheoTieuChiActionPerformed
-        // TODO add your handling code here:
+        private void btnLocTheoTieuChiActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnLocTheoTieuChiActionPerformed
+                // TODO add your handling code here:
 
-        if (!rbtnNam.isSelected() && !rbtnNu.isSelected() && !rbtnTruongBan.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn một tiêu chí!");
-            return;
-        }
-
-        List<ThanhVien> filteredList = new ArrayList<>();
-        for (ThanhVien x : listTV) {
-            if (rbtnNam.isSelected() && x.getGioiTinh().equals("Nam")) {
-                filteredList.add(x);
-            } else if (rbtnNu.isSelected() && x.getGioiTinh().equals("Nữ")) {
-                filteredList.add(x);
-            } else if (rbtnTruongBan.isSelected() && x.getChucDanh().equals("Trưởng Ban")) {
-                filteredList.add(x);
-            }
-        }
-        showData(filteredList, modelTV);
-        tongThanhVien(filteredList);
-    }//GEN-LAST:event_btnLocTheoTieuChiActionPerformed
-
-    private void btnTimKiemThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemThanhVienActionPerformed
-        // TODO add your handling code here:
-        String tim = txtTimKiemThanhVien.getText().toUpperCase();
-        int ktra = 0;
-        for (ThanhVien x : listTV) {
-            if (x.getTenTV().toUpperCase().contains(tim)|| x.getMaTV().toUpperCase().equals(tim)) {
-                ktra = 1;
-                break;
-            }
-        }
-        if (tim.trim().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập tên hoặc mã thành viên cần tìm!");
-        } else if (ktra == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Không tồn tại tên hoặc mã thành viên này trong danh sách!");
-        }else {
-            TimKiemTv1 editTV = new TimKiemTv1(this, rootPaneCheckingEnabled);
-            List<ThanhVien> listTVTimKiem1 = new ArrayList<>();
-            for (ThanhVien x : listTV) {
-                if (x.getTenTV().toUpperCase().contains(tim) || x.getMaTV().toUpperCase().equals(tim)) {
-                    listTVTimKiem1.add(x);
+                if (!rbtnNam.isSelected() && !rbtnNu.isSelected() && !rbtnTruongBan.isSelected()) {
+                        JOptionPane.showMessageDialog(this, "Vui lòng chọn một tiêu chí!");
+                        return;
                 }
-            }
-            editTV.updateTable(listTVTimKiem1);
-            editTV.setVisible(true);
-        }
-        this.showData(listTV, modelTV);
-    }//GEN-LAST:event_btnTimKiemThanhVienActionPerformed
 
-    private void txtTongThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongThanhVienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTongThanhVienActionPerformed
+                List<ThanhVien> filteredList = new ArrayList<>();
+                for (ThanhVien x : listTV) {
+                        if (rbtnNam.isSelected() && x.getGioiTinh().equals("Nam")) {
+                                filteredList.add(x);
+                        } else if (rbtnNu.isSelected() && x.getGioiTinh().equals("Nữ")) {
+                                filteredList.add(x);
+                        } else if (rbtnTruongBan.isSelected() && x.getChucDanh().equals("Trưởng Ban")) {
+                                filteredList.add(x);
+                        }
+                }
+                showData(filteredList, modelTV);
+                tongThanhVien(filteredList);
+        }// GEN-LAST:event_btnLocTheoTieuChiActionPerformed
 
-    private void btnXoaThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaThanhVienActionPerformed
-        // TODO add your handling code here:
-        int removeThanhVien = tblThanhVien.getSelectedRow();
-        System.out.println(removeThanhVien);
-        if (removeThanhVien == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
-        } else if (listTV.size() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xoá!");
-        } else{
-            if(new Dao().removeUser(tblThanhVien.getValueAt(removeThanhVien, 0).toString())){
+        private void btnTimKiemThanhVienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnTimKiemThanhVienActionPerformed
+                // TODO add your handling code here:
+                String tim = txtTimKiemThanhVien.getText().toUpperCase();
+                int ktra = 0;
+                for (ThanhVien x : listTV) {
+                        if (x.getTenTV().toUpperCase().contains(tim) || x.getMaTV().toUpperCase().equals(tim)) {
+                                ktra = 1;
+                                break;
+                        }
+                }
+                if (tim.trim().length() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy nhập tên hoặc mã thành viên cần tìm!");
+                } else if (ktra == 0) {
+                        JOptionPane.showMessageDialog(rootPane,
+                                        "Không tồn tại tên hoặc mã thành viên này trong danh sách!");
+                } else {
+                        TimKiemTv1 editTV = new TimKiemTv1(this, rootPaneCheckingEnabled);
+                        List<ThanhVien> listTVTimKiem1 = new ArrayList<>();
+                        for (ThanhVien x : listTV) {
+                                if (x.getTenTV().toUpperCase().contains(tim) || x.getMaTV().toUpperCase().equals(tim)) {
+                                        listTVTimKiem1.add(x);
+                                }
+                        }
+                        editTV.updateTable(listTVTimKiem1);
+                        editTV.setVisible(true);
+                }
+                this.showData(listTV, modelTV);
+        }// GEN-LAST:event_btnTimKiemThanhVienActionPerformed
+
+        private void txtTongThanhVienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtTongThanhVienActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_txtTongThanhVienActionPerformed
+
+        private void btnXoaThanhVienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnXoaThanhVienActionPerformed
+                // TODO add your handling code here:
+                int removeThanhVien = tblThanhVien.getSelectedRow();
                 System.out.println(removeThanhVien);
-                            listTV.remove(removeThanhVien);
-            }
-        }
-        showDataThanhVien();
-    }//GEN-LAST:event_btnXoaThanhVienActionPerformed
-
-    private void btnSuaThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaThanhVienActionPerformed
-        // TODO add your handling code here:
-        indexThanhVien = tblThanhVien.getSelectedRow();
-        if (listTV.size() == 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                "Hãy nhập thêm thành viên");
-        } else if (indexThanhVien == -1) {
-            JOptionPane.showMessageDialog(rootPane,
-                "Hãy chọn thành viên rồi chỉnh sửa !");
-        } else {
-            EditThanhVien editTV = new EditThanhVien(this, rootPaneCheckingEnabled);
-            editTV.setEditData(listTV.get(indexThanhVien));
-            editTV.setVisible(true);
-        }
-        showDataThanhVien();
-    }//GEN-LAST:event_btnSuaThanhVienActionPerformed
-
-    private void btnThemTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTVActionPerformed
-        new AddThanhVien(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_btnThemTVActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        showDataQuy();
-        txttimkiemchitieu.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txttimkiemchitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimkiemchitieuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttimkiemchitieuActionPerformed
-
-    private void bttimkiemchitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemchitieuActionPerformed
-        // TODO add your handling code here:
-        listTKCT.removeAll(listTKCT);
-        int flag = 0;
-        if(txttimkiemchitieu.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập mã quỹ cần tìm!");
-        }
-        else{
-            for(Quy item : listQuy){
-            if (item.getTenHD().toLowerCase().contains(txttimkiemchitieu.getText().toLowerCase())
-                ||(item.getMaQuy().toLowerCase().contains(txttimkiemchitieu.getText().toLowerCase()))
-                ||(item.getThoiGian().toLowerCase().contains(txttimkiemchitieu.getText().toLowerCase()))
-            ) {
-                flag = 1;
-                listTKCT.add(item);
-            }
-            }
-            if(flag == 1){
-                showDataQuySearch();
-            }
-            else{
-                 JOptionPane.showMessageDialog(rootPane, "Không tồn tại mã quỹ như đã nhập!");
-            }
-        }
-                
-        
-    }//GEN-LAST:event_bttimkiemchitieuActionPerformed
-
-    private void xoachitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoachitieuActionPerformed
-        // TODO add your handling code here:
-        int rmQuy = tableQuanLyChiTieu.getSelectedRow();
-        if(rmQuy == -1){
-            JOptionPane.showMessageDialog(rootPane, "Bạn chưac họn thông tin cần xóa");
-        }
-        else{
-            if(new Dao().removeSpend(tableQuanLyChiTieu.getValueAt(rmQuy, 0).toString())){
-                listQuy.remove(rmQuy);
-            }
-        }
-        showDataQuy();
-    }//GEN-LAST:event_xoachitieuActionPerformed
-
-    private void suachitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suachitieuActionPerformed
-        // TODO add your handling code here:
-        indexQuy  = tableQuanLyChiTieu.getSelectedRow();
-        if (listQuy.size() == 0) {
-            JOptionPane.showMessageDialog(rootPane,
-                "Danh sach quy dang rỗng");
-        } else if (indexQuy == -1) {
-            JOptionPane.showMessageDialog(rootPane,
-                "Chọn phần thông tin bạn muốn chỉnh sửa rồi chỉnh sửa !");
-        } else {
-            EditQuy editQuy = new EditQuy(this, rootPaneCheckingEnabled);
-            editQuy.setDefaultData(listQuy.get(indexQuy));
-            editQuy.setVisible(true);
-        }
-        showDataQuy();
-    }//GEN-LAST:event_suachitieuActionPerformed
-
-    private void themchitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themchitieuActionPerformed
-         new AddQuy(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_themchitieuActionPerformed
-
-    private void xoaTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaTTActionPerformed
-        // TODO add your handling code here:
-        int vitri = tblTT.getSelectedRow();
-        if (vitri == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
-        } else if (listHDTT.size() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xoá!");
-        } else {
-            if(new Dao().removeMedia(tblTT.getValueAt(vitri, 0).toString())){
-                listHDTT.remove(vitri);
-            }
-            showData(listHDTT, modelHDTT);
-        }
-        showDataHDTT();
-    }//GEN-LAST:event_xoaTTActionPerformed
-
-    private void suaTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaTTActionPerformed
-        // TODO add your handling code here:
-        int vitri = tblTT.getSelectedRow();
-        if (listHDTT.size() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm sự kiện");
-        } else if (vitri == -1) {
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 hàng rồi chỉnh sửa !");
-        } else {
-            new EditTruyenThong(this, rootPaneCheckingEnabled, vitri).setVisible(true);
-        }
-        showDataHDTT();
-    }//GEN-LAST:event_suaTTActionPerformed
-
-    private void themTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themTTActionPerformed
-        // TODO add your handling code here:
-        new AddTruyenThong(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_themTTActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        showDataHDDT();
-        jTextField1.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        listTKHD.removeAll(listTKHD);
-        for(HoatDong item : listHD){
-            if (item.getTenHD().toLowerCase().contains(jTextField1.getText().toLowerCase())
-                ||(item.getThoiGian().toLowerCase().contains(jTextField1.getText().toLowerCase()))
-                ||(item.getDiaDiem().toLowerCase().contains(jTextField1.getText().toLowerCase()))
-            ) {
-                listTKHD.add(item);
-
-            }
-        }
-        showDataDTSearch();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void xoaDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaDTActionPerformed
-        int vitri = tblHDDT.getSelectedRow();
-        if(vitri == -1){
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
-        }
-        else if(listHD.size() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
-        }
-        else{
-//            int isCheckYesNo = JOptionPane.showConfirmDialog(null,
-//                "Bạn có thật sự muốn xóa?", "Select an Option...", JOptionPane.YES_NO_CANCEL_OPTION);
-//            if (isCheckYesNo == 0) {
-                if(new Dao().removeTraining(tblHDDT.getValueAt(vitri, 0).toString())){
-                    System.out.println(tblHDDT.getValueAt(vitri, 0).toString());
-                    listHD.remove(vitri);
+                if (removeThanhVien == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
+                } else if (listTV.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xoá!");
+                } else {
+                        if (new Dao().removeUser(tblThanhVien.getValueAt(removeThanhVien, 0).toString())) {
+                                System.out.println(removeThanhVien);
+                                listTV.remove(removeThanhVien);
+                        }
                 }
-                showData(listHD, modelHDDT);
-                JOptionPane.showMessageDialog(rootPane, "Xóa thanh cong!");
-//            }
-        }
-    }//GEN-LAST:event_xoaDTActionPerformed
+                showDataThanhVien();
+        }// GEN-LAST:event_btnXoaThanhVienActionPerformed
 
-    private void suaDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaDTActionPerformed
-        int vitri = tblHDDT.getSelectedRow();
-        if(listHD.size() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm hoạt động");
-        }
-        else if(vitri == -1){
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng trước");
-        }
-        else{
-            new EditDaoTao(this, rootPaneCheckingEnabled, vitri).setVisible(true);
-        }
-        showDataHDDT();
-    }//GEN-LAST:event_suaDTActionPerformed
-
-    private void themDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themDTActionPerformed
-        new AddDaoTao(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_themDTActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        listCSVCSort.removeAll(listCSVCSort);
-        listCSVCSort= new Dao().getInfras();
-        if(rbtsoluong.isSelected() == true){
-            Collections.sort(listCSVCSort , new sortByCountInCSVC()) ;
-        }
-        else if(rbtdongia.isSelected() == true){
-            Collections.sort(listCSVCSort , new sortByGiainCSVC());
-        }
-        else{
-            JOptionPane.showMessageDialog(rootPane, "Bạn cần chọn tiêu chí sắp xếp");
-        }
-        showDataCSVCSort();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        showDataCSVC();
-        txttim.setText("");
-        rbtsoluong.setSelected(false);
-        rbtdongia.setSelected(false);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemActionPerformed
-        // TODO add your handling code here:
-        listTK.removeAll(listTK);
-        int flag = 0;
-        if(txttim.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập vào mã thiết bị hoặc tên thiết bị để tìm kiếm!");
-        }
-        else{
-            for(CoSoVC item : listCSVC){
-                if (item.getTenCSVC().toLowerCase().contains(txttim.getText().toLowerCase())
-                    ||(item.getMaCSVC().toLowerCase().contains(txttim.getText().toLowerCase()))
-                    ||(item.getTrangThai().toLowerCase().contains(txttim.getText().toLowerCase()))
-                ) {
-                    flag = 1;
-                    listTK.add(item);
+        private void btnSuaThanhVienActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnSuaThanhVienActionPerformed
+                // TODO add your handling code here:
+                indexThanhVien = tblThanhVien.getSelectedRow();
+                if (listTV.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane,
+                                        "Hãy nhập thêm thành viên");
+                } else if (indexThanhVien == -1) {
+                        JOptionPane.showMessageDialog(rootPane,
+                                        "Hãy chọn thành viên rồi chỉnh sửa !");
+                } else {
+                        EditThanhVien editTV = new EditThanhVien(this, rootPaneCheckingEnabled);
+                        editTV.setEditData(listTV.get(indexThanhVien));
+                        editTV.setVisible(true);
                 }
-            }
-            if(flag == 0){
-                JOptionPane.showMessageDialog(rootPane, "Không tìm thấy thiết bị cần tìm! Vui lòng nhập lại!");
-            }
-            else{
-                showDataCSVCSearch();
-            }
-        }
-    }//GEN-LAST:event_bttimkiemActionPerformed
+                showDataThanhVien();
+        }// GEN-LAST:event_btnSuaThanhVienActionPerformed
 
-    private void xoaCSVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaCSVCActionPerformed
-        int vitri = tblCSVC.getSelectedRow();
-        if(vitri == -1){
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
-        }
-        else if(listCSVC.size() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
-        }
-        else{
-            if(new Dao().removeInfras(tblCSVC.getValueAt(vitri, 0).toString())){
-                            listCSVC.remove(vitri);
-            }
-            showData(listCSVC, modelCSVC);
-        }
-        showDataCSVC();
-    }//GEN-LAST:event_xoaCSVCActionPerformed
+        private void btnThemTVActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnThemTVActionPerformed
+                new AddThanhVien(this, rootPaneCheckingEnabled).setVisible(true);
+        }// GEN-LAST:event_btnThemTVActionPerformed
 
-    private void suaCSVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaCSVCActionPerformed
-        int vitri = tblCSVC.getSelectedRow();
-        if(listCSVC.size() == 0){
-            JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm thiết bị");
-        }
-        else if(vitri == -1){
-            JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng trước");
-        }
-        else{
-            new EditCSVC(this, rootPaneCheckingEnabled, vitri).setVisible(true);
-        }
-        showDataCSVC();
-    }//GEN-LAST:event_suaCSVCActionPerformed
+        private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
+                // TODO add your handling code here:
+                showDataQuy();
+                txttimkiemchitieu.setText("");
+        }// GEN-LAST:event_jButton2ActionPerformed
 
-    private void themCSVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themCSVCActionPerformed
-        new AddCSVC(this, rootPaneCheckingEnabled).setVisible(true);
-    }//GEN-LAST:event_themCSVCActionPerformed
+        private void txttimkiemchitieuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txttimkiemchitieuActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_txttimkiemchitieuActionPerformed
 
-    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
-        // TODO add your handling code here:
-        frameView.setSelectedIndex(0);
-        setColor(home);
-        resetColor(user);
-
-        resetColor(infra);
-
-        resetColor(train);
-
-        resetColor(spend);
-
-
-        resetColor(media);
-
-    }//GEN-LAST:event_homeMouseClicked
-
-    private void infraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infraMouseClicked
-        // TODO add your handling code here:
-        frameView.setSelectedIndex(2);
-        setColor(infra);
-        resetColor(user);
-
-        resetColor(home);
-
-        resetColor(train);
-
-        resetColor(spend);
-
-
-        resetColor(media);
-
-    }//GEN-LAST:event_infraMouseClicked
-
-    private void mediaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mediaMouseClicked
-        // TODO add your handling code here:
-        frameView.setSelectedIndex(3);
-        setColor(media);
-        resetColor(user);
-
-        resetColor(infra);
-
-        resetColor(train);
-
-        resetColor(spend);
-
-        resetColor(home);
-    }//GEN-LAST:event_mediaMouseClicked
-
-    private void trainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainMouseClicked
-        frameView.setSelectedIndex(4);
-        setColor(train);
-        resetColor(user);
-
-        resetColor(infra);
-
-        resetColor(home);
-
-        resetColor(spend);
-
-        resetColor(media);
-    }//GEN-LAST:event_trainMouseClicked
-
-    private void spendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spendMouseClicked
-        frameView.setSelectedIndex(5);
-        setColor(spend);
-        resetColor(user);
-
-        resetColor(infra);
-
-        resetColor(train);
-
-        resetColor(home);
-
-        resetColor(media);
-    }//GEN-LAST:event_spendMouseClicked
-
-    private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
-        // TODO add your handling code here:
-        frameView.setSelectedIndex(1);
-        setColor(user);
-        resetColor(home);
-
-        resetColor(infra);
-
-        resetColor(train);
-
-        resetColor(spend);
-
-
-        resetColor(media);
-    }//GEN-LAST:event_userMouseClicked
-
-    private void txttimActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttimActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttimActionPerformed
-
-    private void rbtdongiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtdongiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbtdongiaActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        showDataHDDT();
-    }//GEN-LAST:event_refreshBtnActionPerformed
-    
-    void setColor(JPanel panel){
-        panel.setBackground(new Color(242, 242, 242));
-    }
-     void resetColor(JPanel panel){
-        panel.setBackground(new Color(204, 204, 204));
-
-    }
-    public void tongThanhVien(List<ThanhVien> list){
-        int tong = 0;
-        for(ThanhVien x : list){
-            tong += 1;
-        }
-        txtTongThanhVien.setText(String.valueOf(tong));
-    }
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+        private void bttimkiemchitieuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bttimkiemchitieuActionPerformed
+                // TODO add your handling code here:
+                listTKCT.removeAll(listTKCT);
+                int flag = 0;
+                if (txttimkiemchitieu.getText().trim().equals("")) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy nhập mã quỹ cần tìm!");
+                } else {
+                        for (Quy item : listQuy) {
+                                if (item.getTenHD().toLowerCase().contains(txttimkiemchitieu.getText().toLowerCase())
+                                                || (item.getMaQuy().toLowerCase()
+                                                                .contains(txttimkiemchitieu.getText().toLowerCase()))
+                                                || (item.getThoiGian().toLowerCase()
+                                                                .contains(txttimkiemchitieu.getText().toLowerCase()))) {
+                                        flag = 1;
+                                        listTKCT.add(item);
+                                }
+                        }
+                        if (flag == 1) {
+                                showDataQuySearch();
+                        } else {
+                                JOptionPane.showMessageDialog(rootPane, "Không tồn tại mã quỹ như đã nhập!");
+                        }
                 }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TrangChu().setVisible(true);
-            }
-        });
-    }
-    
-    
+        }// GEN-LAST:event_bttimkiemchitieuActionPerformed
+
+        private void xoachitieuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_xoachitieuActionPerformed
+                // TODO add your handling code here:
+                int rmQuy = tableQuanLyChiTieu.getSelectedRow();
+                if (rmQuy == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Bạn chưac họn thông tin cần xóa");
+                } else {
+                        if (new Dao().removeSpend(tableQuanLyChiTieu.getValueAt(rmQuy, 0).toString())) {
+                                listQuy.remove(rmQuy);
+                        }
+                }
+                showDataQuy();
+        }// GEN-LAST:event_xoachitieuActionPerformed
+
+        private void suachitieuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_suachitieuActionPerformed
+                // TODO add your handling code here:
+                indexQuy = tableQuanLyChiTieu.getSelectedRow();
+                if (listQuy.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane,
+                                        "Danh sach quy dang rỗng");
+                } else if (indexQuy == -1) {
+                        JOptionPane.showMessageDialog(rootPane,
+                                        "Chọn phần thông tin bạn muốn chỉnh sửa rồi chỉnh sửa !");
+                } else {
+                        EditQuy editQuy = new EditQuy(this, rootPaneCheckingEnabled);
+                        editQuy.setDefaultData(listQuy.get(indexQuy));
+                        editQuy.setVisible(true);
+                }
+                showDataQuy();
+        }// GEN-LAST:event_suachitieuActionPerformed
+
+        private void themchitieuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_themchitieuActionPerformed
+                new AddQuy(this, rootPaneCheckingEnabled).setVisible(true);
+        }// GEN-LAST:event_themchitieuActionPerformed
+
+        private void xoaTTActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_xoaTTActionPerformed
+                // TODO add your handling code here:
+                int vitri = tblTT.getSelectedRow();
+                if (vitri == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
+                } else if (listHDTT.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xoá!");
+                } else {
+                        if (new Dao().removeMedia(tblTT.getValueAt(vitri, 0).toString())) {
+                                listHDTT.remove(vitri);
+                        }
+                        showData(listHDTT, modelHDTT);
+                }
+                showDataHDTT();
+        }// GEN-LAST:event_xoaTTActionPerformed
+
+        private void suaTTActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_suaTTActionPerformed
+                // TODO add your handling code here:
+                int vitri = tblTT.getSelectedRow();
+                if (listHDTT.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm sự kiện");
+                } else if (vitri == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 hàng rồi chỉnh sửa !");
+                } else {
+                        new EditTruyenThong(this, rootPaneCheckingEnabled, vitri).setVisible(true);
+                }
+                showDataHDTT();
+        }// GEN-LAST:event_suaTTActionPerformed
+
+        private void themTTActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_themTTActionPerformed
+                // TODO add your handling code here:
+                new AddTruyenThong(this, rootPaneCheckingEnabled).setVisible(true);
+        }// GEN-LAST:event_themTTActionPerformed
+
+        private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton3ActionPerformed
+                // TODO add your handling code here:
+                showDataHDDT();
+                jTextField1.setText("");
+        }// GEN-LAST:event_jButton3ActionPerformed
+
+        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
+                // TODO add your handling code here:
+                listTKHD.removeAll(listTKHD);
+                for (HoatDong item : listHD) {
+                        if (item.getTenHD().toLowerCase().contains(jTextField1.getText().toLowerCase())
+                                        || (item.getThoiGian().toLowerCase()
+                                                        .contains(jTextField1.getText().toLowerCase()))
+                                        || (item.getDiaDiem().toLowerCase()
+                                                        .contains(jTextField1.getText().toLowerCase()))) {
+                                listTKHD.add(item);
+
+                        }
+                }
+                showDataDTSearch();
+        }// GEN-LAST:event_jButton1ActionPerformed
+
+        private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField1ActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_jTextField1ActionPerformed
+
+        private void xoaDTActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_xoaDTActionPerformed
+                int vitri = tblHDDT.getSelectedRow();
+                if (vitri == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
+                } else if (listHD.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
+                } else {
+                        // int isCheckYesNo = JOptionPane.showConfirmDialog(null,
+                        // "Bạn có thật sự muốn xóa?", "Select an Option...",
+                        // JOptionPane.YES_NO_CANCEL_OPTION);
+                        // if (isCheckYesNo == 0) {
+                        if (new Dao().removeTraining(tblHDDT.getValueAt(vitri, 0).toString())) {
+                                System.out.println(tblHDDT.getValueAt(vitri, 0).toString());
+                                listHD.remove(vitri);
+                        }
+                        showData(listHD, modelHDDT);
+                        JOptionPane.showMessageDialog(rootPane, "Xóa thanh cong!");
+                        // }
+                }
+        }// GEN-LAST:event_xoaDTActionPerformed
+
+        private void suaDTActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_suaDTActionPerformed
+                int vitri = tblHDDT.getSelectedRow();
+                if (listHD.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm hoạt động");
+                } else if (vitri == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng trước");
+                } else {
+                        new EditDaoTao(this, rootPaneCheckingEnabled, vitri).setVisible(true);
+                }
+                showDataHDDT();
+        }// GEN-LAST:event_suaDTActionPerformed
+
+        private void themDTActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_themDTActionPerformed
+                new AddDaoTao(this, rootPaneCheckingEnabled).setVisible(true);
+        }// GEN-LAST:event_themDTActionPerformed
+
+        private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton4ActionPerformed
+                // TODO add your handling code here:
+                listCSVCSort.removeAll(listCSVCSort);
+                listCSVCSort = new Dao().getInfras();
+                if (rbtsoluong.isSelected() == true) {
+                        Collections.sort(listCSVCSort, new sortByCountInCSVC());
+                } else if (rbtdongia.isSelected() == true) {
+                        Collections.sort(listCSVCSort, new sortByGiainCSVC());
+                } else {
+                        JOptionPane.showMessageDialog(rootPane, "Bạn cần chọn tiêu chí sắp xếp");
+                }
+                showDataCSVCSort();
+        }// GEN-LAST:event_jButton4ActionPerformed
+
+        private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton5ActionPerformed
+                // TODO add your handling code here:
+                showDataCSVC();
+                txttim.setText("");
+                rbtsoluong.setSelected(false);
+                rbtdongia.setSelected(false);
+        }// GEN-LAST:event_jButton5ActionPerformed
+
+        private void bttimkiemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_bttimkiemActionPerformed
+                // TODO add your handling code here:
+                listTK.removeAll(listTK);
+                int flag = 0;
+                if (txttim.getText().equals("")) {
+                        JOptionPane.showMessageDialog(rootPane,
+                                        "Vui lòng nhập vào mã thiết bị hoặc tên thiết bị để tìm kiếm!");
+                } else {
+                        for (CoSoVC item : listCSVC) {
+                                if (item.getTenCSVC().toLowerCase().contains(txttim.getText().toLowerCase())
+                                                || (item.getMaCSVC().toLowerCase()
+                                                                .contains(txttim.getText().toLowerCase()))
+                                                || (item.getTrangThai().toLowerCase()
+                                                                .contains(txttim.getText().toLowerCase()))) {
+                                        flag = 1;
+                                        listTK.add(item);
+                                }
+                        }
+                        if (flag == 0) {
+                                JOptionPane.showMessageDialog(rootPane,
+                                                "Không tìm thấy thiết bị cần tìm! Vui lòng nhập lại!");
+                        } else {
+                                showDataCSVCSearch();
+                        }
+                }
+        }// GEN-LAST:event_bttimkiemActionPerformed
+
+        private void xoaCSVCActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_xoaCSVCActionPerformed
+                int vitri = tblCSVC.getSelectedRow();
+                if (vitri == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
+                } else if (listCSVC.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
+                } else {
+                        if (new Dao().removeInfras(tblCSVC.getValueAt(vitri, 0).toString())) {
+                                listCSVC.remove(vitri);
+                        }
+                        showData(listCSVC, modelCSVC);
+                }
+                showDataCSVC();
+        }// GEN-LAST:event_xoaCSVCActionPerformed
+
+        private void suaCSVCActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_suaCSVCActionPerformed
+                int vitri = tblCSVC.getSelectedRow();
+                if (listCSVC.size() == 0) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm thiết bị");
+                } else if (vitri == -1) {
+                        JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng trước");
+                } else {
+                        new EditCSVC(this, rootPaneCheckingEnabled, vitri).setVisible(true);
+                }
+                showDataCSVC();
+        }// GEN-LAST:event_suaCSVCActionPerformed
+
+        private void themCSVCActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_themCSVCActionPerformed
+                new AddCSVC(this, rootPaneCheckingEnabled).setVisible(true);
+        }// GEN-LAST:event_themCSVCActionPerformed
+
+        private void homeMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_homeMouseClicked
+                // TODO add your handling code here:
+                frameView.setSelectedIndex(0);
+                setColor(home);
+                resetColor(user);
+
+                resetColor(infra);
+
+                resetColor(train);
+
+                resetColor(spend);
+
+                resetColor(media);
+
+        }// GEN-LAST:event_homeMouseClicked
+
+        private void infraMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_infraMouseClicked
+                // TODO add your handling code here:
+                frameView.setSelectedIndex(2);
+                setColor(infra);
+                resetColor(user);
+
+                resetColor(home);
+
+                resetColor(train);
+
+                resetColor(spend);
+
+                resetColor(media);
+
+        }// GEN-LAST:event_infraMouseClicked
+
+        private void mediaMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_mediaMouseClicked
+                // TODO add your handling code here:
+                frameView.setSelectedIndex(3);
+                setColor(media);
+                resetColor(user);
+
+                resetColor(infra);
+
+                resetColor(train);
+
+                resetColor(spend);
+
+                resetColor(home);
+        }// GEN-LAST:event_mediaMouseClicked
+
+        private void trainMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_trainMouseClicked
+                frameView.setSelectedIndex(4);
+                setColor(train);
+                resetColor(user);
+
+                resetColor(infra);
+
+                resetColor(home);
+
+                resetColor(spend);
+
+                resetColor(media);
+        }// GEN-LAST:event_trainMouseClicked
+
+        private void spendMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_spendMouseClicked
+                frameView.setSelectedIndex(5);
+                setColor(spend);
+                resetColor(user);
+
+                resetColor(infra);
+
+                resetColor(train);
+
+                resetColor(home);
+
+                resetColor(media);
+        }// GEN-LAST:event_spendMouseClicked
+
+        private void userMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_userMouseClicked
+                // TODO add your handling code here:
+                frameView.setSelectedIndex(1);
+                setColor(user);
+                resetColor(home);
+
+                resetColor(infra);
+
+                resetColor(train);
+
+                resetColor(spend);
+
+                resetColor(media);
+        }// GEN-LAST:event_userMouseClicked
+
+        private void txttimActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txttimActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_txttimActionPerformed
+
+        private void rbtdongiaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_rbtdongiaActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_rbtdongiaActionPerformed
+
+        private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jTextField5ActionPerformed
+                // TODO add your handling code here:
+        }// GEN-LAST:event_jTextField5ActionPerformed
+
+        private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_refreshBtnActionPerformed
+                showDataHDDT();
+        }// GEN-LAST:event_refreshBtnActionPerformed
+
+        void setColor(JPanel panel) {
+                panel.setBackground(new Color(242, 242, 242));
+        }
+
+        void resetColor(JPanel panel) {
+                panel.setBackground(new Color(204, 204, 204));
+
+        }
+
+        public void tongThanhVien(List<ThanhVien> list) {
+                int tong = 0;
+                for (ThanhVien x : list) {
+                        tong += 1;
+                }
+                txtTongThanhVien.setText(String.valueOf(tong));
+        }
+
+        public static void main(String args[]) {
+                try {
+                        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager
+                                        .getInstalledLookAndFeels()) {
+                                if ("Nimbus".equals(info.getName())) {
+                                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                                        break;
+                                }
+                        }
+                } catch (ClassNotFoundException ex) {
+                        java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE,
+                                        null, ex);
+                } catch (InstantiationException ex) {
+                        java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE,
+                                        null, ex);
+                } catch (IllegalAccessException ex) {
+                        java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE,
+                                        null, ex);
+                } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                        java.util.logging.Logger.getLogger(TrangChu.class.getName()).log(java.util.logging.Level.SEVERE,
+                                        null, ex);
+                }
+                // </editor-fold>
+
+                /* Create and display the form */
+                java.awt.EventQueue.invokeLater(new Runnable() {
+                        public void run() {
+                                new TrangChu().setVisible(true);
+                        }
+                });
+        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CSVC;
@@ -2063,248 +2046,260 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JButton xoachitieu;
     // End of variables declaration//GEN-END:variables
 
-
-    private void showDataThanhVien() {
-            this.showData(listTV, modelTV);
-            int tong = 0;
-            for (ThanhVien x : listTV) {
-                tong += 1;
-            }
-            txtTongThanhVien.setText(String.valueOf(tong));
-    }
-    
-    public void addThanhVien(ThanhVien t) {
-        if(new Dao().addUser(t)){
-                    listTV.add(t);
-        }
-        this.showData(listTV, modelTV);
-        showDataThanhVien();
-    }
-    private void showDataQuy(){
-        this.showData(listQuy, modelQuy);
-        double chiphicl = 0; 
-        for(Quy x : listQuy){
-            chiphicl += x.getChiPhi();
-        }
-        txtchiphicon.setText("" + chiphicl);
-    }
-    private void showDataQuySearch(){
-        this.showData(listTKCT, modelQuy);
-        double chiphicl = 0; 
-        for(Quy x : listTKCT){
-            chiphicl += x.getChiPhi();
-        }
-        txtchiphicon.setText("" + chiphicl);
-    }
-    public void addQuy(Quy q){
-        if(new Dao().addSpend(q)){
-             listQuy.add(q); 
-        }
-        this.showData(listQuy, modelQuy);
-        showDataQuy();
-    }
-    private void showDataCSVC(){
-        modelCSVC.setNumRows(0);
-        this.showData(listCSVC, modelCSVC);
-        int SoLuongCSVC = 0;
-        double TongChiPhi = 0;
-        for (var x : listCSVC) {
-            SoLuongCSVC += x.getSoLuong();
-            TongChiPhi += x.getChiPhi() * x.getSoLuong();
-        }
-        jTextField5.setText("" + SoLuongCSVC);
-        jTextField6.setText("" + df.format(TongChiPhi));
-    }
-    private void showDataCSVCSearch(){
-        modelCSVC.setNumRows(0);
-        this.showData(listTK, modelCSVC);
-        int SoLuongCSVC = 0;
-        double TongChiPhi = 0;
-        for (var x : listTK) {
-            SoLuongCSVC += x.getSoLuong();
-            TongChiPhi += x.getChiPhi() * x.getSoLuong();
-        }
-        jTextField5.setText("" + SoLuongCSVC);
-        jTextField6.setText("" + df.format(TongChiPhi));
-    }
-    private void showDataCSVCSort(){
-        modelCSVC.setNumRows(0);
-        this.showData(listCSVCSort, modelCSVC);
-        int SoLuongCSVC = 0;
-        double TongChiPhi = 0;
-        for (var x : listCSVC) {
-            SoLuongCSVC += x.getSoLuong();
-            TongChiPhi += x.getChiPhi() * x.getSoLuong();
-        }
-        jTextField5.setText("" + SoLuongCSVC);
-        jTextField6.setText("" + df.format(TongChiPhi));
-    }
-
-    public void addCSVC(CoSoVC cs) {
-        if(new Dao().addInfras(cs)){
-             listCSVC.add(cs);
-             
-        }
-        this.showData(listCSVC, modelCSVC);
-        showDataCSVC(); 
-    }
-
-    
-    private void showDataHDTT(){
-        this.showData(listHDTT, modelHDTT);
-        int SoThanhVien = 0;
-        double TongChiPhi = 0;
-        for (var x : listHDTT) {
-            if (x.getLoaiHD().equalsIgnoreCase("Hoat dong Truyen Thong")) {
-                SoThanhVien += x.getSoThanhVien();
-                TongChiPhi += x.getKinhPhi();
-            }
-        }
-        txtTongThanhVienTT.setText(String.valueOf(SoThanhVien));
-        txtTongChiPhiTT.setText(String.valueOf(TongChiPhi));
-    }
-    private void showDataHDDT(){
-        this.showData(listHD, modelHDDT);
-        int SoThanhVien = 0;
-        double TongChiPhi = 0;
-        for (var x : listHD) {
-            if (x.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
-                SoThanhVien += x.getSoThanhVien();
-                TongChiPhi += x.getKinhPhi();
-            }
-        }
-        txtThanhVienHDDT.setText("" + SoThanhVien);
-        txtChiPhiHDDT.setText("" + df.format(TongChiPhi));
-    }
-    private void showDataDTSearch() {
-        this.showData(listTKHD, modelHDDT);
-        int SoThanhVien = 0;
-        double TongChiPhi = 0;
-        for (var x : listTKHD) {
-            if (x.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
-                SoThanhVien += x.getSoThanhVien();
-                TongChiPhi += x.getKinhPhi();
-            }
-        }
-        txtThanhVienHDDT.setText("" + SoThanhVien);
-        txtChiPhiHDDT.setText("" + df.format(TongChiPhi));
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void addHD(HoatDong a) {
-        if(new Dao().addTraining(a)){
-            listHD.add(a);
-           JOptionPane.showMessageDialog(this, "Thêm thành công hoạt động đào tạo mới!");
-        }
-        showData(listHD, modelHDDT);
-        showDataHDDT();
-    }
-
-    public void addTT(HoatDong tt) {
-        if(new Dao().addMedia(tt)){
-             listHDTT.add(tt);
-        }
-        showData(listHDTT, modelHDTT);
-        showDataHDTT();
-    }
-
-    void updateThanhVien(ThanhVien tv) {
-        ThanhVien thanhVienDaChon = listTV.get(indexThanhVien);
-        thanhVienDaChon.setMaTV(tv.getMaTV());
-        thanhVienDaChon.setTenTV(tv.getTenTV());
-        thanhVienDaChon.setKhoa(tv.getKhoa());
-        thanhVienDaChon.setChuyenNghanh(tv.getChuyenNghanh());
-        thanhVienDaChon.setBan(tv.getBan());
-        thanhVienDaChon.setNgaySinh(tv.getNgaySinh());
-        thanhVienDaChon.setGioiTinh(tv.getGioiTinh());
-        thanhVienDaChon.setEmail(tv.getEmail());
-        thanhVienDaChon.setSdt(tv.getSdt());
-        thanhVienDaChon.setChucDanh(tv.getChucDanh());
-        if(new Dao().updateUser(tblThanhVien.getValueAt(indexThanhVien, 0).toString(), thanhVienDaChon)){
-                    listTV.set(indexThanhVien, thanhVienDaChon);
-        }
-        showDataThanhVien();
-    }
-    public void updataQuy(Quy q){
-        Quy qSelect = listQuy.get(indexQuy);
-        qSelect.setMaQuy(q.getMaQuy());
-        qSelect.setTenHD(q.getTenHD());
-        qSelect.setThoiGian(q.getThoiGian());
-        qSelect.setChiPhi(q.getChiPhi());
-        if(new Dao().updateSpend(qSelect.getMaQuy(), q)){
-                 listQuy.set(indexQuy, qSelect);
-        }
-        showDataQuy();
-        
-    }
-    public void editCSVC(CoSoVC cs, int vt) {
-        if(new Dao().updateInfras(cs.getMaCSVC(), cs)){
-                    listCSVC.set(vt, cs);
-        }
-        showData(listCSVC, modelCSVC);
-        showDataCSVC();
-    }
-
-    public void editHD(HoatDong a, int vt) {
-        if(new Dao().updateTraining(a.getMaHD(), a)){
-            listHD.set(vt, a);
-        }
-        showData(listHD, modelHDDT);
-        showDataHDDT();
-    }
-
-    public void editHDTT(HoatDong tt, int vt) {
-        if(new Dao().updateMedia(tt.getMaHD(), tt)){
-            listHDTT.set(vt, tt);
-        }
-        showData(listHDTT, modelHDTT);
-        showDataHDTT();
-    }
-    
-    
-    public <T> void showData(List<T> list, DefaultTableModel model){
-        model.setRowCount(0);
-        for(T t: list){
-            if(t instanceof ThanhVien){
-                ThanhVien tv = (ThanhVien)t;
-                model.addRow(new Object[]{
-                    tv.getMaTV(), tv.getTenTV(), tv.getKhoa(), tv.getChuyenNghanh(), tv.getBan(),
-                    tv.getNgaySinh(), tv.getGioiTinh(), tv.getEmail(), tv.getSdt(), tv.getChucDanh()
-                });
-            }
-            if(t instanceof Quy){
-                Quy q = (Quy)t;
-                model.addRow(new Object[]{
-                    q.getMaQuy() , q.getTenHD() , q.getThoiGian() , q.getChiPhi()
-                });
-            }
-            if (t instanceof HoatDong) {
-                HoatDong z = (HoatDong) t;
-                if (z.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
-                    model.addRow(new Object[]{
-                       z.getMaHD(), z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi()
-                    });
+        private void showDataThanhVien() {
+                this.showData(listTV, modelTV);
+                int tong = 0;
+                for (ThanhVien x : listTV) {
+                        tong += 1;
                 }
-            }
-            if (t instanceof HoatDong) {
-                HoatDong a = (HoatDong) t;
-                if (a.getLoaiHD().equalsIgnoreCase("Hoat dong Truyen Thong")) {
-                    model.addRow(new Object[]{
-                        a.getMaHD(), a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi()
-                    });
-                }
-            }
-            if(t instanceof CoSoVC){
-                CoSoVC csvc = (CoSoVC)t;
-                model.addRow(new Object[]{
-                    csvc.getMaCSVC(), csvc.getTenCSVC(), csvc.getTrangThai(), csvc.getSoLuong(), csvc.getChiPhi()
-                });
-            }
+                txtTongThanhVien.setText(String.valueOf(tong));
         }
-    }
-    
-    
-   
 
-    
+        public void addThanhVien(ThanhVien t) {
+                if (new Dao().addUser(t)) {
+                        listTV.add(t);
+                }
+                this.showData(listTV, modelTV);
+                showDataThanhVien();
+        }
+
+        private void showDataQuy() {
+                this.showData(listQuy, modelQuy);
+                double chiphicl = 0;
+                for (Quy x : listQuy) {
+                        chiphicl += x.getChiPhi();
+                }
+                txtchiphicon.setText("" + chiphicl);
+        }
+
+        private void showDataQuySearch() {
+                this.showData(listTKCT, modelQuy);
+                double chiphicl = 0;
+                for (Quy x : listTKCT) {
+                        chiphicl += x.getChiPhi();
+                }
+                txtchiphicon.setText("" + chiphicl);
+        }
+
+        public void addQuy(Quy q) {
+                if (new Dao().addSpend(q)) {
+                        listQuy.add(q);
+                }
+                this.showData(listQuy, modelQuy);
+                showDataQuy();
+        }
+
+        private void showDataCSVC() {
+                modelCSVC.setNumRows(0);
+                this.showData(listCSVC, modelCSVC);
+                int SoLuongCSVC = 0;
+                double TongChiPhi = 0;
+                for (var x : listCSVC) {
+                        SoLuongCSVC += x.getSoLuong();
+                        TongChiPhi += x.getChiPhi() * x.getSoLuong();
+                }
+                jTextField5.setText("" + SoLuongCSVC);
+                jTextField6.setText("" + df.format(TongChiPhi));
+        }
+
+        private void showDataCSVCSearch() {
+                modelCSVC.setNumRows(0);
+                this.showData(listTK, modelCSVC);
+                int SoLuongCSVC = 0;
+                double TongChiPhi = 0;
+                for (var x : listTK) {
+                        SoLuongCSVC += x.getSoLuong();
+                        TongChiPhi += x.getChiPhi() * x.getSoLuong();
+                }
+                jTextField5.setText("" + SoLuongCSVC);
+                jTextField6.setText("" + df.format(TongChiPhi));
+        }
+
+        private void showDataCSVCSort() {
+                modelCSVC.setNumRows(0);
+                this.showData(listCSVCSort, modelCSVC);
+                int SoLuongCSVC = 0;
+                double TongChiPhi = 0;
+                for (var x : listCSVC) {
+                        SoLuongCSVC += x.getSoLuong();
+                        TongChiPhi += x.getChiPhi() * x.getSoLuong();
+                }
+                jTextField5.setText("" + SoLuongCSVC);
+                jTextField6.setText("" + df.format(TongChiPhi));
+        }
+
+        public void addCSVC(CoSoVC cs) {
+                if (new Dao().addInfras(cs)) {
+                        listCSVC.add(cs);
+
+                }
+                this.showData(listCSVC, modelCSVC);
+                showDataCSVC();
+        }
+
+        private void showDataHDTT() {
+                this.showData(listHDTT, modelHDTT);
+                int SoThanhVien = 0;
+                double TongChiPhi = 0;
+                for (var x : listHDTT) {
+                        if (x.getLoaiHD().equalsIgnoreCase("Hoat dong Truyen Thong")) {
+                                SoThanhVien += x.getSoThanhVien();
+                                TongChiPhi += x.getKinhPhi();
+                        }
+                }
+                txtTongThanhVienTT.setText(String.valueOf(SoThanhVien));
+                txtTongChiPhiTT.setText(String.valueOf(TongChiPhi));
+        }
+
+        private void showDataHDDT() {
+                this.showData(listHD, modelHDDT);
+                int SoThanhVien = 0;
+                double TongChiPhi = 0;
+                for (var x : listHD) {
+                        if (x.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
+                                SoThanhVien += x.getSoThanhVien();
+                                TongChiPhi += x.getKinhPhi();
+                        }
+                }
+                txtThanhVienHDDT.setText("" + SoThanhVien);
+                txtChiPhiHDDT.setText("" + df.format(TongChiPhi));
+        }
+
+        private void showDataDTSearch() {
+                this.showData(listTKHD, modelHDDT);
+                int SoThanhVien = 0;
+                double TongChiPhi = 0;
+                for (var x : listTKHD) {
+                        if (x.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
+                                SoThanhVien += x.getSoThanhVien();
+                                TongChiPhi += x.getKinhPhi();
+                        }
+                }
+                txtThanhVienHDDT.setText("" + SoThanhVien);
+                txtChiPhiHDDT.setText("" + df.format(TongChiPhi));
+                // throw new UnsupportedOperationException("Not supported yet."); // Generated
+                // from
+                // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+
+        public void addHD(HoatDong a) {
+                if (new Dao().addTraining(a)) {
+                        listHD.add(a);
+                        JOptionPane.showMessageDialog(this, "Thêm thành công hoạt động đào tạo mới!");
+                }
+                showData(listHD, modelHDDT);
+                showDataHDDT();
+        }
+
+        public void addTT(HoatDong tt) {
+                if (new Dao().addMedia(tt)) {
+                        listHDTT.add(tt);
+                }
+                showData(listHDTT, modelHDTT);
+                showDataHDTT();
+        }
+
+        void updateThanhVien(ThanhVien tv) {
+                ThanhVien thanhVienDaChon = listTV.get(indexThanhVien);
+                thanhVienDaChon.setMaTV(tv.getMaTV());
+                thanhVienDaChon.setTenTV(tv.getTenTV());
+                thanhVienDaChon.setKhoa(tv.getKhoa());
+                thanhVienDaChon.setChuyenNghanh(tv.getChuyenNghanh());
+                thanhVienDaChon.setNgaySinh(tv.getNgaySinh());
+                thanhVienDaChon.setGioiTinh(tv.getGioiTinh());
+                thanhVienDaChon.setEmail(tv.getEmail());
+                thanhVienDaChon.setSdt(tv.getSdt());
+                thanhVienDaChon.setChucDanh(tv.getChucDanh());
+                if (new Dao().updateUser(tblThanhVien.getValueAt(indexThanhVien, 0).toString(), thanhVienDaChon)) {
+                        listTV.set(indexThanhVien, thanhVienDaChon);
+                }
+                showDataThanhVien();
+        }
+
+        public void updataQuy(Quy q) {
+                Quy qSelect = listQuy.get(indexQuy);
+                qSelect.setMaQuy(q.getMaQuy());
+                qSelect.setTenHD(q.getTenHD());
+                qSelect.setThoiGian(q.getThoiGian());
+                qSelect.setChiPhi(q.getChiPhi());
+                if (new Dao().updateSpend(qSelect.getMaQuy(), q)) {
+                        listQuy.set(indexQuy, qSelect);
+                }
+                showDataQuy();
+
+        }
+
+        public void editCSVC(CoSoVC cs, int vt) {
+                if (new Dao().updateInfras(cs.getMaCSVC(), cs)) {
+                        listCSVC.set(vt, cs);
+                }
+                showData(listCSVC, modelCSVC);
+                showDataCSVC();
+        }
+
+        public void editHD(HoatDong a, int vt) {
+                if (new Dao().updateTraining(a.getMaHD(), a)) {
+                        listHD.set(vt, a);
+                }
+                showData(listHD, modelHDDT);
+                showDataHDDT();
+        }
+
+        public void editHDTT(HoatDong tt, int vt) {
+                if (new Dao().updateMedia(tt.getMaHD(), tt)) {
+                        listHDTT.set(vt, tt);
+                }
+                showData(listHDTT, modelHDTT);
+                showDataHDTT();
+        }
+
+        @Override
+        public <T> void showData(List<T> list, DefaultTableModel model) {
+                model.setRowCount(0);
+                for (T t : list) {
+                        if (t instanceof ThanhVien) {
+                                ThanhVien tv = (ThanhVien) t;
+                                model.addRow(new Object[] {
+                                                tv.getMaTV(), tv.getTenTV(), tv.getKhoa(), tv.getChuyenNghanh(),
+                                                tv.getTenBan(),
+                                                tv.getNgaySinh(), tv.getGioiTinh(), tv.getEmail(), tv.getSdt(),
+                                                tv.getChucDanh()
+                                });
+                        }
+                        if (t instanceof Quy) {
+                                Quy q = (Quy) t;
+                                model.addRow(new Object[] {
+                                                q.getMaQuy(), q.getTenHD(), q.getThoiGian(), q.getChiPhi()
+                                });
+                        }
+                        if (t instanceof HoatDong) {
+                                HoatDong z = (HoatDong) t;
+                                if (z.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
+                                        model.addRow(new Object[] {
+                                                        z.getMaHD(), z.getTenHD(), z.getThoiGian(), z.getDiaDiem(),
+                                                        z.getMoTa(), z.getSoThanhVien(),
+                                                        z.getKinhPhi()
+                                        });
+                                }
+                        }
+                        if (t instanceof HoatDong) {
+                                HoatDong a = (HoatDong) t;
+                                
+                                        model.addRow(new Object[] {
+                                                        a.getMaHD(), a.getTenHD(), a.getDanhGia(), a.getMoTa(),
+                                                        a.getSoThanhVien(), a.getDiaDiem(),
+                                                        a.getThoiGian(), a.getKinhPhi(), 
+                                        });
+                                
+                        }
+                        if (t instanceof CoSoVC) {
+                                CoSoVC csvc = (CoSoVC) t;
+                                model.addRow(new Object[] {
+                                                csvc.getMaCSVC(), csvc.getTenCSVC(), csvc.getTrangThai(),
+                                                csvc.getSoLuong(), csvc.getChiPhi()
+                                });
+                        }
+                }
+        }
+
 }

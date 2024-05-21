@@ -6,9 +6,6 @@ package run;
 
 import controller.Dao;
 import view.Login1;
-import view.TrangChu;
-import java.sql.Connection;
-import java.sql.DriverManager;
 
 /**
  *
