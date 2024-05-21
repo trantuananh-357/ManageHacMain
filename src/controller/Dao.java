@@ -129,7 +129,7 @@ public class Dao {
     }
     ////////////////////////////////////
     public boolean addInfras(CoSoVC a){
-        String sql = "INSERT INTO tblCSVC(maCSVC, tenCSVC, trangThai, soLuong, Chiphi)" + "VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO tblCSVC(maCSVC, tenCSVC, trangThai, soLuong, kinhPhi)" + "VALUES(?,?,?,?,?)";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, a.getMaCSVC());
@@ -175,7 +175,7 @@ public class Dao {
                 s.setTenCSVC(rs.getString("tenCSVC"));
                 s.setTrangThai(rs.getString("trangThai"));
                 s.setSoLuong(rs.getInt("soLuong"));
-                s.setChiPhi(rs.getDouble("Chiphi"));
+                s.setChiPhi(rs.getDouble("kinhPhi"));
                 list.add(s);
             }
         } catch (Exception e) {
@@ -185,7 +185,7 @@ public class Dao {
         return list;
     }
      public boolean updateInfras(String maCSVC, CoSoVC newCSVC){
-        String update = "Update tblCSVC SET tenCSVC = ?, trangThai = ?, soLuong = ?, Chiphi = ? WHERE maCSVC = ?";
+        String update = "Update tblCSVC SET tenCSVC = ?, trangThai = ?, soLuong = ?, kinhPhi = ? WHERE maCSVC = ?";
         try {
         PreparedStatement ps = conn.prepareStatement(update);
         ps.setString(5, newCSVC.getMaCSVC());

@@ -75,6 +75,12 @@ public class AddTruyenThong extends javax.swing.JDialog {
 
         jLabel8.setText("Địa điểm :");
 
+        txtmoTa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmoTaActionPerformed(evt);
+            }
+        });
+
         jLabel3.setText("Mô tả:");
 
         jLabel4.setText("Đánh giá");
@@ -242,6 +248,10 @@ public class AddTruyenThong extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this,"Lỗi do: " + e.getMessage());
         }
     }//GEN-LAST:event_ThemBtnActionPerformed
+
+    private void txtmoTaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmoTaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmoTaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -124,6 +124,12 @@ public class AddThanhVien extends javax.swing.JDialog {
         });
 
         cbKhoa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "K14", "K15", "K16", "K17", "K18" }));
+        cbKhoa.setVerifyInputWhenFocusTarget(false);
+        cbKhoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbKhoaActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel11.setText("NHẬP THÔNG TIN THÀNH VIÊN MỚI");
@@ -359,6 +365,10 @@ public class AddThanhVien extends javax.swing.JDialog {
     private void cbChuyenNghanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbChuyenNghanhActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbChuyenNghanhActionPerformed
+
+    private void cbKhoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKhoaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbKhoaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
