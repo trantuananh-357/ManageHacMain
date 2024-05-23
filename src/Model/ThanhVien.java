@@ -3,25 +3,35 @@ package Model;
 import java.io.Serializable;
 
 //maTv,tenTv,khóa,chuyenNganh,ngaySinh,gmail,sdt,gTinh,vaiTro,;
-public class ThanhVien implements Serializable{
+public class ThanhVien implements Serializable {
 
-    private String maTV, tenTV, khoa, chuyenNghanh, ban, ngaySinh, gioiTinh, email, sdt, chucDanh;
+    private String maTV, tenTV, khoa, chuyenNghanh, tenBan, ngaySinh, gioiTinh, email, sdt, chucDanh, maBan;
 
     public ThanhVien() {
-        maTV = tenTV = khoa = chuyenNghanh = ban = ngaySinh = gioiTinh = email = sdt = chucDanh = "";
+        maTV = tenTV = khoa = chuyenNghanh = tenBan = ngaySinh = gioiTinh = email = sdt = chucDanh = maBan = "";
     }
 
-    public ThanhVien(String maTV, String tenTV, String khoa, String chuyenNghanh, String ban, String ngaySinh, String gioiTinh, String email, String sdt, String chucDanh) {
+    public ThanhVien(String maTV, String tenTV, String khoa, String chuyenNghanh, String ngaySinh,
+            String gioiTinh, String email, String sdt, String chucDanh, String maBan) {
         this.maTV = maTV;
         this.tenTV = tenTV;
         this.khoa = khoa;
         this.chuyenNghanh = chuyenNghanh;
-        this.ban = ban;
+        // this.tenBan = tenBan;
         this.ngaySinh = ngaySinh;
         this.gioiTinh = gioiTinh;
         this.email = email;
         this.sdt = sdt;
         this.chucDanh = chucDanh;
+        this.maBan = maBan;
+    }
+
+    public void setMaBan(String maBan) {
+        this.maBan = maBan;
+    }
+
+    public String getMaBan() {
+        return maBan;
     }
 
     public String getMaTV() {
@@ -56,12 +66,12 @@ public class ThanhVien implements Serializable{
         this.chuyenNghanh = chuyenNghanh;
     }
 
-    public String getBan() {
-        return ban;
+    public String getTenBan() {
+        return tenBan;
     }
 
-    public void setBan(String ban) {
-        this.ban = ban;
+    public void setTenBan(String ban) {
+        this.tenBan = ban;
     }
 
     public String getNgaySinh() {
