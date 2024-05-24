@@ -15,23 +15,27 @@ public class Quy implements Serializable{
     private String tenHD;
     private String thoiGian;
     private double chiPhi;
-    static public double tongQuy;
+    public double tongQuy;
 
     public Quy() {
     }
 
-    public Quy(String maQuy, String tenHD, String thoiGian, double chiPhi) {
+    public Quy(String maQuy, String tenHD, String thoiGian, double chiPhi, double tongQuy) {
         this.maQuy = maQuy;
         this.tenHD = tenHD;
         this.thoiGian = thoiGian;
         this.chiPhi = chiPhi;
+        this.tongQuy = tongQuy;
     }
+
+    
 
     public String getMaQuy() {
         return maQuy;
     }
 
-    public void setMaQuy(String maQuy) {
+    public void setMaQuy(String maQuy) throws Exception{
+        if(maQuy.trim().length() == 0) throw new Exception("Mã quỹ không được để trống");
         this.maQuy = maQuy;
     }
 
@@ -47,7 +51,8 @@ public class Quy implements Serializable{
         return thoiGian;
     }
 
-    public void setThoiGian(String thoiGian) {
+    public void setThoiGian(String thoiGian) throws Exception{
+        if(thoiGian.trim().length() == 0) throw new Exception("Thời gian không được để trống");
         this.thoiGian = thoiGian;
     }
 
@@ -59,13 +64,16 @@ public class Quy implements Serializable{
         this.chiPhi = chiPhi;
     }
 
-    public static double getTongQuy() {
+    public double getTongQuy() {
         return tongQuy;
     }
 
-    public static void setTongQuy(double tongQuy) {
-        Quy.tongQuy = tongQuy;
+    public void setTongQuy(double tongQuy) throws Exception{
+        if(tongQuy == 0) throw new Exception("Tổng quỹ không được bằng 0");
+        this.tongQuy = tongQuy;
     }
+
+
 
     
 

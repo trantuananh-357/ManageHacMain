@@ -47,6 +47,8 @@ public class EditThanhVien extends javax.swing.JDialog {
         txtNgaySinh = new javax.swing.JTextField();
         cbKhoa = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtMaBan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -118,6 +120,8 @@ public class EditThanhVien extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setText("CHỈNH SỬA THÔNG TIN THÀNH VIÊN");
 
+        jLabel12.setText("Mã ban:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,8 +171,15 @@ public class EditThanhVien extends javax.swing.JDialog {
                         .addComponent(btnHuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap(247, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(259, 259, 259)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 234, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -211,7 +222,11 @@ public class EditThanhVien extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(cbBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHoanTat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -257,7 +272,8 @@ public class EditThanhVien extends javax.swing.JDialog {
         String gmail = txtGmail.getText();
         String sdt = txtSDT.getText();
         String chucDanh = cbChucDanh.getSelectedItem().toString();
-
+        String maban = txtMaBan.getText();
+        
         String pattern = "^[a-zA-Z0-9]+$";
         String pattern1 = "^[a-zA-Z\\sÀ-ỹ]+$";
         int maxLength = 30;
@@ -301,7 +317,7 @@ public class EditThanhVien extends javax.swing.JDialog {
                 isOk = false;
             }
             if (isOk) {
-                ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh);
+                ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh, maban);
                 home.updateThanhVien(tv);
                 JOptionPane.showMessageDialog(rootPane, "Sửa thành công thành viên mới !");
             }
@@ -359,6 +375,7 @@ public class EditThanhVien extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -370,6 +387,7 @@ public class EditThanhVien extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtnGioiTinhNam;
     private javax.swing.JRadioButton rbtnGioiTinhNu;
     private javax.swing.JTextField txtGmail;
+    private javax.swing.JTextField txtMaBan;
     private javax.swing.JTextField txtMaTV;
     private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSDT;

@@ -52,6 +52,8 @@ public class AddThanhVien extends javax.swing.JDialog {
         cbKhoa = new javax.swing.JComboBox<>();
         txtNgaySinh = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        txtMaBan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -134,6 +136,8 @@ public class AddThanhVien extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel11.setText("NHẬP THÔNG TIN THÀNH VIÊN MỚI");
 
+        jLabel12.setText("Mã ban:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,12 +185,19 @@ public class AddThanhVien extends javax.swing.JDialog {
                                     .addComponent(txtNgaySinh))))
                         .addContainerGap(20, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(77, 77, 77)
+                        .addGap(76, 76, 76)
                         .addComponent(btnHuy)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(247, 247, 247)
-                .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
+                        .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -225,11 +236,15 @@ public class AddThanhVien extends javax.swing.JDialog {
                     .addComponent(jLabel10)
                     .addComponent(cbChucDanh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -268,6 +283,7 @@ public class AddThanhVien extends javax.swing.JDialog {
         String chuyenNghanh = cbChuyenNghanh.getSelectedItem().toString();
         String ban = cbBan.getSelectedItem().toString();
         String ngay = txtNgaySinh.getText();
+        String maban = txtMaBan.getText();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date ngaySinh = null;
 
@@ -321,8 +337,7 @@ public class AddThanhVien extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Ngày sinh không hợp lệ!VD:10/11/2002");
                 isOk = false;
             }
-        }
-
+        } 
         if (isOk) {
             if (gioiTinh.trim().length() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Vui lòng chọn giới tính!");
@@ -339,11 +354,27 @@ public class AddThanhVien extends javax.swing.JDialog {
             } else if (!isValidPhoneNumber(sdt)) {
                 JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ! Vui lòng nhập 10 chữ số.");
                 isOk = false;
-            }
+            } else if (maban.length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "Không được để trống mã ban!");
+                isOk = false;
+            } else {
+                int d=0;
+                for(var z : new Dao().getBan()){
+                    if(z.getMaBan().equalsIgnoreCase(maban)){
+                        d=-1;
+                        break;
+                    }
+                }             
+                if (d==0) {
+                    JOptionPane.showMessageDialog(rootPane, "Không tồn tại mã ban");
+                    isOk = false;
+                }
+            }            
+            
         }
 
         if (isOk) {
-            ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh);
+            ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh, maban);
             String chuoi = tv.getMaTV().toUpperCase();
             int ktra = 0;
             for (ThanhVien x : listTV) {
@@ -357,6 +388,7 @@ public class AddThanhVien extends javax.swing.JDialog {
             if (ktra == 0) {
                 home.addThanhVien(tv);
                 JOptionPane.showMessageDialog(rootPane, "Thêm thành công thành viên mới !");
+                this.dispose();
             }
         }
 
@@ -420,6 +452,7 @@ public class AddThanhVien extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -431,6 +464,7 @@ public class AddThanhVien extends javax.swing.JDialog {
     private javax.swing.JRadioButton rbtnGioiTinhNam;
     private javax.swing.JRadioButton rbtnGioiTinhNu;
     private javax.swing.JTextField txtGmail;
+    private javax.swing.JTextField txtMaBan;
     private javax.swing.JTextField txtMaTV;
     private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSDT;

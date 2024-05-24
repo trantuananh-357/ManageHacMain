@@ -23,14 +23,14 @@ import javax.swing.JOptionPane;
 public class AddQuy extends javax.swing.JDialog {
 
     private TrangChu home; 
-    private ArrayList<Quy> dsQuy;
+    private ArrayList<Quy> dsQuy = new Dao().getSpend();
     
     public AddQuy(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+       
         this.setLocationRelativeTo(null);
-        home = (TrangChu) parent;
-        dsQuy = new Dao().getSpend();
+         home = (TrangChu) parent;
     }
 
    
@@ -41,13 +41,13 @@ public class AddQuy extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         btthemchiphi = new javax.swing.JButton();
         bthuybo = new javax.swing.JButton();
         cbbhoatdong = new javax.swing.JComboBox<>();
         txtmachitieu = new javax.swing.JTextField();
         txtthoigian = new javax.swing.JTextField();
-        txtchiphi = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtTongQuy = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thêm chi tiêu");
@@ -57,8 +57,6 @@ public class AddQuy extends javax.swing.JDialog {
         jLabel2.setText("Tên hoạt động:");
 
         jLabel3.setText("Thời gian:");
-
-        jLabel4.setText("Chi phí:");
 
         btthemchiphi.setText("Thêm");
         btthemchiphi.addActionListener(new java.awt.event.ActionListener() {
@@ -75,6 +73,8 @@ public class AddQuy extends javax.swing.JDialog {
         });
 
         cbbhoatdong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Truyền thông ", "Cơ sở vật chất", "Sự kiện" }));
+
+        jLabel5.setText("Tổng quỹ: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,13 +97,15 @@ public class AddQuy extends javax.swing.JDialog {
                                     .addComponent(btthemchiphi))
                                 .addGap(30, 30, 30))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(jLabel5)
                                 .addGap(31, 31, 31)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtmachitieu)
                             .addComponent(cbbhoatdong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtthoigian)
-                            .addComponent(txtchiphi))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtTongQuy, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -117,19 +119,19 @@ public class AddQuy extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(cbbhoatdong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtthoigian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtchiphi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(33, 33, 33)
+                    .addComponent(jLabel5)
+                    .addComponent(txtTongQuy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btthemchiphi, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bthuybo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47))
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -141,75 +143,40 @@ public class AddQuy extends javax.swing.JDialog {
     }//GEN-LAST:event_bthuyboActionPerformed
 
     private void btthemchiphiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btthemchiphiActionPerformed
-        // TODO add your handling code here:
-        String ma = txtmachitieu.getText();
         String ten = cbbhoatdong.getSelectedItem().toString();
-        String ngay = txtthoigian.getText();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date ngayChiTieu = null;
-        Double chitieu = Double.parseDouble(txtchiphi.getText());
-        int maxLength = 30;
+        
         String pattern = "^[a-zA-Z0-9]+$";
-        boolean isOk = true; 
-        if (ma.trim().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Không được để trống mã chi tiêu!");
-            isOk = false;
-        } else if (ma.length() > maxLength) {
-            JOptionPane.showMessageDialog(rootPane, "Mã chi tiêu không được vượt quá " + maxLength + " ký tự!");
-            isOk = false;
-        } else if (!ma.matches(pattern)) {
-            JOptionPane.showMessageDialog(rootPane, "Mã chi tiêu chỉ được chứa chữ cái và số!");
-            isOk = false;
-        }
-        else if (ten.length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Không được để trống Tên hoạt động chi tiêu!");
-            isOk = false;
-        } else if (ten.length() > maxLength) {
-            JOptionPane.showMessageDialog(rootPane, "Tên hoạt động chi tiêu không được vượt quá " + maxLength + " ký tự!");
-            isOk = false;
-        } else if (ten.matches("^[a-zA-Z] + $")) {
-            JOptionPane.showMessageDialog(rootPane, "Tên hoạt động chi tiêu chỉ được chứa chữ cái!");
-            isOk = false;
-        }
-        else if (ngay.trim().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập thời gian chi tiêu!");
-            isOk = false;
-        } else if (ngay.trim().length() != 0) {
+        
+        Quy x = new Quy();          
+        try {
+            x.setMaQuy(txtmachitieu.getText());
+            if (!x.getMaQuy().matches(pattern)) throw new Exception("Mã chi tiêu chỉ được chứa chữ cái và số!");
+            for(var z : dsQuy){
+                if(z.getMaQuy().equalsIgnoreCase(x.getMaQuy())){
+                    throw new Exception("Trùng mã quỹ");
+                }
+            }              
+            x.setThoiGian(txtthoigian.getText());
             try {
-                ngayChiTieu = dateFormat.parse(ngay);
+                ngayChiTieu = dateFormat.parse(x.getThoiGian());
             } catch (ParseException ex) {
-                JOptionPane.showMessageDialog(rootPane, "Thời gian không hợp lệ!VD:10/11/2002");
-                isOk = false;
+                JOptionPane.showMessageDialog(this, "Thời gian không hợp lệ!VD:10/11/2002");
             }
-        }
-        else if (chitieu.toString().trim().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập chi phí!");
-            isOk = false;
-        }
-        if(isOk){
-            Quy q = new Quy(ma, ten, ngay, chitieu);
-            String chuoi = q.getMaQuy().toUpperCase();
+            x.setChiPhi(0);
+            if(txtTongQuy.getText().length() == 0) throw new Exception("Tổng quỹ không được để trống");
+            Double tongquy = Double.parseDouble(txtTongQuy.getText());
+            x.setTongQuy(tongquy);
             
-            int ktra = 0;
-            for(Quy item: dsQuy){
-               String chuoi1 = item.getMaQuy().toUpperCase();
-               if(chuoi1.equals(chuoi)){
-                   JOptionPane.showMessageDialog(rootPane, "Mã chi tiêu này đã tồn tại!");
-                   ktra =1;
-                   break;
-               }
-               
-            }
-            if(ktra == 0){
-                home.addQuy(q);
-                JOptionPane.showMessageDialog(rootPane, "Thêm mới thành công");
-            }
+            home.addQuy(x);
+            JOptionPane.showMessageDialog(this, "Thêm thành công quỹ mới");
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btthemchiphiActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -257,8 +224,8 @@ public class AddQuy extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtchiphi;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField txtTongQuy;
     private javax.swing.JTextField txtmachitieu;
     private javax.swing.JTextField txtthoigian;
     // End of variables declaration//GEN-END:variables

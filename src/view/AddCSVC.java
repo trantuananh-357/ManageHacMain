@@ -1,7 +1,6 @@
 package view;
 
 import Model.CoSoVC;
-import Model.Quy;
 import controller.Dao;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -38,10 +37,12 @@ private TrangChu home;
         txtTenThietBi = new javax.swing.JTextField();
         txtTrangThai = new javax.swing.JTextField();
         txtSoLuong = new javax.swing.JTextField();
-        txtChiPhi = new javax.swing.JTextField();
+        txtKinhPhi = new javax.swing.JTextField();
         btnHoanTat = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtMaBan = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thêm sơ sở vật chất");
@@ -54,7 +55,19 @@ private TrangChu home;
 
         jLabel4.setText("Số lượng:");
 
-        jLabel5.setText("Chí phí:");
+        jLabel5.setText("Kinh phí:");
+
+        txtMaThietBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaThietBiActionPerformed(evt);
+            }
+        });
+
+        txtTenThietBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenThietBiActionPerformed(evt);
+            }
+        });
 
         btnHoanTat.setText("Hoàn tất");
         btnHoanTat.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +85,14 @@ private TrangChu home;
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setText("THÊM MỚI CƠ SỞ VẬT CHẤT");
+
+        jLabel7.setText("Mã ban:");
+
+        txtMaBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaBanActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,14 +116,16 @@ private TrangChu home;
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(56, 56, 56)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtChiPhi, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                                    .addComponent(txtKinhPhi, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                                     .addComponent(txtSoLuong)
                                     .addComponent(txtTrangThai)
                                     .addComponent(txtTenThietBi)
-                                    .addComponent(txtMaThietBi))))))
+                                    .addComponent(txtMaThietBi)
+                                    .addComponent(txtMaBan))))))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -129,12 +152,16 @@ private TrangChu home;
                 .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtChiPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                    .addComponent(txtKinhPhi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHoanTat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addGap(44, 44, 44))
         );
 
         pack();
@@ -160,16 +187,38 @@ private TrangChu home;
                 throw new Exception("Số lượng không được để trống");
             }
             x.setSoLuong(Integer.parseInt(txtSoLuong.getText()));
-            if(txtChiPhi.getText().length() == 0){
+            if(txtKinhPhi.getText().length() == 0){
                 throw new Exception("Chi phí không được để trống");
             }
-            x.setChiPhi(Double.parseDouble(txtChiPhi.getText()));
+            x.setChiPhi(Double.parseDouble(txtKinhPhi.getText()));
+            x.setMaBan(txtMaBan.getText());
+            int d=0;            
+            for(var z : new Dao().getBan()){
+                if(z.getMaBan().equalsIgnoreCase(x.getMaBan())){
+                    d=-1;
+                    break;
+                }
+            }  
+            
+            if (d==0) throw new Exception("Không tồn tại mã ban");
             home.addCSVC(x);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
         
     }//GEN-LAST:event_btnHoanTatActionPerformed
+
+    private void txtMaBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaBanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaBanActionPerformed
+
+    private void txtMaThietBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaThietBiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaThietBiActionPerformed
+
+    private void txtTenThietBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenThietBiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenThietBiActionPerformed
 
     
     
@@ -221,7 +270,9 @@ private TrangChu home;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField txtChiPhi;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField txtKinhPhi;
+    private javax.swing.JTextField txtMaBan;
     private javax.swing.JTextField txtMaThietBi;
     private javax.swing.JTextField txtSoLuong;
     private javax.swing.JTextField txtTenThietBi;

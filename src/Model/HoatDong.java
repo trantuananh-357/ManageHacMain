@@ -20,10 +20,11 @@ public class HoatDong implements Serializable{
     private String diaDiem;
     private String moTa;
     private String danhGia;
+    private String maBan;
     public HoatDong() {
     }
 
-    public HoatDong(String maHD, String tenHD, String loaiHD, String thoiGian, int soThanhVien, double kinhPhi, String diaDiem, String moTa,String danhGia) {
+    public HoatDong(String maHD, String tenHD, String loaiHD, String thoiGian, int soThanhVien, double kinhPhi, String diaDiem, String moTa, String danhGia, String maBan) {
         this.maHD = maHD;
         this.tenHD = tenHD;
         this.loaiHD = loaiHD;
@@ -33,8 +34,8 @@ public class HoatDong implements Serializable{
         this.diaDiem = diaDiem;
         this.moTa = moTa;
         this.danhGia = danhGia;
+        this.maBan = maBan;
     }
-    
 
     public String getMaHD(){
         return maHD;
@@ -75,7 +76,7 @@ public class HoatDong implements Serializable{
     }
 
     public void setTenHD(String tenHD) throws Exception{
-        if(tenHD.trim().length() == 0) throw new Exception("Ten hoat dong khong duoc de trong");
+        if(tenHD.trim().length() == 0) throw new Exception("Tên hoạt động không được để trống");
         this.tenHD = tenHD;
     }
 
@@ -84,7 +85,7 @@ public class HoatDong implements Serializable{
     }
 
     public void setThoiGian(String thoiGian) throws Exception{
-        if(thoiGian.trim().length() == 0) throw new Exception("Thoi gian khong duoc de trong");
+        if(thoiGian.trim().length() == 0) throw new Exception("Thời gian không được để trống");
         this.thoiGian = thoiGian;
     }
 
@@ -94,12 +95,12 @@ public class HoatDong implements Serializable{
     }
 
     public void setKinhPhi(double kinhPhi) throws Exception{
-        if(kinhPhi < 0) throw new Exception("Kinh phi không nhỏ hơn 0");
+        if(kinhPhi < 0) throw new Exception("Kinh phí không nhỏ hơn 0");
         this.kinhPhi = kinhPhi;
     }
 
     public void setDiaDiem(String diaDiem) throws Exception{
-        if(diaDiem.trim().length() == 0) throw new Exception("Dia diem khong duoc de trong");
+        if(diaDiem.trim().length() == 0) throw new Exception("Địa điểm không được để trống");
         this.diaDiem = diaDiem;
     }
 
@@ -109,6 +110,15 @@ public class HoatDong implements Serializable{
 
     public void setDanhGia(String danhGia) {
         this.danhGia = danhGia;
+    }
+
+    public String getMaBan() {
+        return maBan;
+    }
+
+    public void setMaBan(String maBan) throws Exception{
+        if(maBan.trim().length() == 0) throw new Exception("Mã ban không được để trống");
+        this.maBan = maBan;
     }
 
     

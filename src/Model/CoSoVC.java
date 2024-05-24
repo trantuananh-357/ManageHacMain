@@ -16,16 +16,18 @@ public class CoSoVC implements Serializable{
     private String trangThai;
     private int soLuong;
     private double ChiPhi;
+    private String maBan;
 
     public CoSoVC() {
     }
 
-    public CoSoVC(String maCSVC, String tenCSVC, String trangThai, int soLuong, double ChiPhi) {
+    public CoSoVC(String maCSVC, String tenCSVC, String trangThai, int soLuong, double ChiPhi, String maBan) {
         this.maCSVC = maCSVC;
         this.tenCSVC = tenCSVC;
         this.trangThai = trangThai;
         this.soLuong = soLuong;
         this.ChiPhi = ChiPhi;
+        this.maBan = maBan;
     }
 
     public String getMaCSVC() {
@@ -47,7 +49,11 @@ public class CoSoVC implements Serializable{
     public double getChiPhi() {
         return ChiPhi;
     }
-
+    
+    public String getMaBan() {
+        return maBan;
+    }
+    
     public void setMaCSVC(String maCSVC) throws Exception{
         if(maCSVC.trim().length() == 0) throw new Exception("Mã cơ sở vật chất không được để trống");
         this.maCSVC = maCSVC;
@@ -71,6 +77,11 @@ public class CoSoVC implements Serializable{
     public void setChiPhi(double ChiPhi) throws Exception{
         if(ChiPhi <= 0) throw new Exception("Giá cơ sở vật chất phải là số dương");
         this.ChiPhi = ChiPhi;
+    }
+
+    public void setMaBan(String maBan) throws Exception{
+        if(maBan.trim().length() == 0) throw new Exception("Mã ban không được để trống");
+        this.maBan = maBan;
     }
     
     

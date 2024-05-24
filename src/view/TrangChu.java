@@ -1,5 +1,6 @@
 package view;
 
+import Model.Ban;
 import Model.CoSoVC;
 import Model.HoatDong;
 import Model.Quy;
@@ -33,6 +34,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private List<HoatDong> listTKHD;
     private List<HoatDong> listHDTT;
     private List<HoatDong> listTKHDTT;
+    private ArrayList<Ban> listBan;
 
     
     private List<Quy> listQuy;
@@ -43,6 +45,8 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private final DefaultTableModel modelHDDT;
     private final DefaultTableModel modelHDTT;
     private final DefaultTableModel modelQuy;
+    private final DefaultTableModel modelBan;
+
     
 
     DecimalFormat df = new DecimalFormat("#,###.000");
@@ -51,26 +55,30 @@ public class TrangChu extends javax.swing.JFrame implements View {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setTitle("Trang chủ");
-        listTV = new Dao().getUser();
-        listCSVC = new Dao().getInfras();
+        listTV = new Dao().getUser();////User
+        listCSVC = new Dao().getInfras();////CSVC
         listCSVCSort = new ArrayList<>();
         listTK = new ArrayList<>();
         listTKHD = new ArrayList<>();//traning
-        listHD = new Dao().getTraining(); ////Dao
-        listHDTT = new Dao().getMedia();
-        listQuy = new Dao().getSpend();
+        listHD = new Dao().getTraining(); ////Daotao
+        listHDTT = new Dao().getMedia();///Truyen thong
+        listQuy = new Dao().getSpend();//Quỹ
         listTKCT = new ArrayList<>();
         listTKHDTT = new ArrayList<>();
+        listBan = new Dao().getBan();///Ban
         modelTV = (DefaultTableModel) tblThanhVien.getModel();
         modelCSVC = (DefaultTableModel) tblCSVC.getModel();
         modelHDDT = (DefaultTableModel) tblHDDT.getModel();
         modelHDTT = (DefaultTableModel) tblTT.getModel();
         modelQuy = (DefaultTableModel) tableQuanLyChiTieu.getModel();
+        modelBan = (DefaultTableModel) tblBan.getModel();
+
         showDataThanhVien();
         showDataQuy();
         showDataCSVC();
         showDataHDTT();
         showDataHDDT();
+        showDataBan();
         
     }
 
@@ -183,6 +191,16 @@ public class TrangChu extends javax.swing.JFrame implements View {
         jPanel16 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
         jLabel41 = new javax.swing.JLabel();
+        Ban = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel51 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblBan = new javax.swing.JTable();
+        jLabel52 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        themBan = new javax.swing.JButton();
+        suaBan = new javax.swing.JButton();
+        xoaBan = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -205,7 +223,8 @@ public class TrangChu extends javax.swing.JFrame implements View {
         user = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel53 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -359,7 +378,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                             .addComponent(jLabel47, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
 
         frameView.addTab("", Home);
@@ -371,7 +390,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Mã TV", "Tên TV", "Khoá", "Chuyên Nghành", "Ban", "Ngày sinh", "Giới tính", "Email", "SĐT", "Chức vụ"
+                "Mã TV", "Tên TV", "Khoá", "Chuyên ngành", "Ban", "Ngày sinh", "Giới tính", "Email", "SĐT", "Chức vụ", "Mã ban"
             }
         ));
         tblThanhVien.setMaximumSize(new java.awt.Dimension(1026, 0));
@@ -525,7 +544,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addComponent(txtTimKiemThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addComponent(btnTimKiemThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 233, Short.MAX_VALUE))
+                .addGap(0, 351, Short.MAX_VALUE))
         );
         UserLayout.setVerticalGroup(
             UserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,7 +580,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addGroup(UserLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLocTheoTieuChi, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(653, Short.MAX_VALUE))
         );
 
         frameView.addTab("", User);
@@ -573,7 +592,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Mã thiết bị", "Tên thiết bị", "Trạng thái", "Số lượng", "Chi Phí CSVC"
+                "Mã thiết bị", "Tên thiết bị", "Trạng thái", "Số lượng", "Chi Phí CSVC", "Mã ban"
             }
         ));
         jScrollPane5.setViewportView(tblCSVC);
@@ -681,43 +700,45 @@ public class TrangChu extends javax.swing.JFrame implements View {
         CSVC.setLayout(CSVCLayout);
         CSVCLayout.setHorizontalGroup(
             CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5)
             .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(CSVCLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
                 .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(xoaCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 1238, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(CSVCLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
                         .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(themCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(xoaCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(CSVCLayout.createSequentialGroup()
+                                .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6)
+                                    .addComponent(themCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(suaCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(96, 96, 96)
                         .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(suaCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(96, 96, 96)
-                .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CSVCLayout.createSequentialGroup()
-                        .addComponent(rbtsoluong)
-                        .addGap(18, 18, 18)
-                        .addComponent(rbtdongia))
-                    .addGroup(CSVCLayout.createSequentialGroup()
-                        .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bttimkiem)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton5))
-                    .addComponent(jButton4))
-                .addGap(0, 260, Short.MAX_VALUE))
+                            .addGroup(CSVCLayout.createSequentialGroup()
+                                .addComponent(rbtsoluong)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtdongia))
+                            .addGroup(CSVCLayout.createSequentialGroup()
+                                .addComponent(txttim, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bttimkiem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton5))
+                            .addComponent(jButton4))))
+                .addGap(0, 203, Short.MAX_VALUE))
         );
         CSVCLayout.setVerticalGroup(
             CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CSVCLayout.createSequentialGroup()
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -739,7 +760,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 .addGroup(CSVCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(xoaCSVC, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 281, Short.MAX_VALUE))
+                .addGap(0, 606, Short.MAX_VALUE))
         );
 
         frameView.addTab("", CSVC);
@@ -752,7 +773,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Mã Sự Kiện", "Tên sự kiện", "Đánh giá", "Mô tả", "Số lượng thành viên", "Địa điểm", "Thời gian ", "Chi Phí"
+                "Mã Sự Kiện", "Tên sự kiện", "Đánh giá", "Mô tả", "Số lượng thành viên", "Địa điểm", "Thời gian ", "Chi Phí", "Mã ban"
             }
         ));
         jScrollPane3.setViewportView(tblTT);
@@ -865,7 +886,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                         .addComponent(bttimkiemmedia)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bttimkiemmedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(376, Short.MAX_VALUE))))
+                        .addContainerGap(495, Short.MAX_VALUE))))
         );
 
         MEdiaLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {suaTT, themTT, xoaTT});
@@ -894,7 +915,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addComponent(bttimkiemmedia, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(xoaTT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bttimkiemmedia1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(315, Short.MAX_VALUE))
+                .addContainerGap(663, Short.MAX_VALUE))
         );
 
         frameView.addTab("", MEdia);
@@ -906,12 +927,19 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Mã Hoạt Động", "Tên hoạt động", "Thời gian", "Địa điểm", "Mô tả ", "Số lượng thành viên", "Kinh Phí"
+                "Mã Hoạt Động", "Tên hoạt động", "Thời gian", "Địa điểm", "Mô tả ", "Số lượng thành viên", "Kinh Phí", "Mã ban"
             }
         ));
+        tblHDDT.setToolTipText("");
         jScrollPane4.setViewportView(tblHDDT);
 
         jLabel3.setText("Tổng số lượng thành viên :");
+
+        txtThanhVienHDDT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtThanhVienHDDTActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Tổng chi phí:");
 
@@ -1044,7 +1072,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                             .addComponent(xoaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(suaDT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(291, Short.MAX_VALUE))
+                .addContainerGap(639, Short.MAX_VALUE))
         );
 
         frameView.addTab("", Traning);
@@ -1056,11 +1084,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
             },
             new String [] {
-                "Mã chi tiêu", "Tên chi tiêu", "Thơi gian", "Thu/Chi"
+                "Mã chi tiêu", "Tên chi tiêu", "Thời gian", "Thu/Chi", "Tổng quỹ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1171,15 +1199,15 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addComponent(txtchiphicon, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(182, 182, 182))
             .addGroup(SpendLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 85, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 202, Short.MAX_VALUE))
         );
         SpendLayout.setVerticalGroup(
             SpendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SpendLayout.createSequentialGroup()
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addGroup(SpendLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -1193,10 +1221,112 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     .addComponent(suachitieu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(xoachitieu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(592, Short.MAX_VALUE))
         );
 
         frameView.addTab("", Spend);
+
+        Ban.setBackground(new java.awt.Color(255, 255, 255));
+        Ban.setMinimumSize(new java.awt.Dimension(0, 0));
+
+        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(343, 61));
+
+        jLabel51.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel51.setText("QUẢN LÍ BAN CLB HAC HaUI");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel51)
+                .addGap(0, 979, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jScrollPane6.setPreferredSize(new java.awt.Dimension(452, 402));
+
+        tblBan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Mã ban", "Tên ban", "Số lượng thành viên", "Tổng quỹ", "Mã quỹ"
+            }
+        ));
+        jScrollPane6.setViewportView(tblBan);
+
+        jLabel52.setText("Tổng số lượng ban :");
+
+        themBan.setText("Thêm");
+        themBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themBanActionPerformed(evt);
+            }
+        });
+
+        suaBan.setText("Sửa");
+
+        xoaBan.setText("Xóa");
+        xoaBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                xoaBanActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout BanLayout = new javax.swing.GroupLayout(Ban);
+        Ban.setLayout(BanLayout);
+        BanLayout.setHorizontalGroup(
+            BanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BanLayout.createSequentialGroup()
+                .addGroup(BanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BanLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel52)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BanLayout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(themBan))
+                    .addGroup(BanLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(suaBan)
+                        .addGap(66, 66, 66)
+                        .addComponent(xoaBan)))
+                .addContainerGap(1065, Short.MAX_VALUE))
+            .addGroup(BanLayout.createSequentialGroup()
+                .addGroup(BanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 1239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        BanLayout.setVerticalGroup(
+            BanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BanLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addGroup(BanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel52)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(themBan)
+                .addGap(18, 18, 18)
+                .addGroup(BanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(suaBan)
+                    .addComponent(xoaBan))
+                .addGap(0, 682, Short.MAX_VALUE))
+        );
+
+        jScrollPane6.getAccessibleContext().setAccessibleName("");
+
+        frameView.addTab("", Ban);
 
         jScrollPane7.setViewportView(frameView);
 
@@ -1393,9 +1523,26 @@ public class TrangChu extends javax.swing.JFrame implements View {
             .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
         );
 
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/Icon_person.png"))); // NOI18N
-        jLabel19.setText("jLabel5");
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(238, 48));
+
+        jLabel53.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 16)); // NOI18N
+        jLabel53.setText("Ban");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(58, 58, 58)
+                .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel53, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1416,7 +1563,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1439,9 +1586,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 .addComponent(train, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(spend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(3574, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1474,8 +1621,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
         resetColor(spend);
 
-
         resetColor(media);
+        
+        resetColor(jPanel2);
 
     }//GEN-LAST:event_homeMouseClicked
 
@@ -1491,8 +1639,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
         resetColor(spend);
 
-
         resetColor(media);
+        
+        resetColor(jPanel2);
 
     }//GEN-LAST:event_infraMouseClicked
 
@@ -1509,6 +1658,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         resetColor(spend);
 
         resetColor(home);
+        resetColor(jPanel2);
     }//GEN-LAST:event_mediaMouseClicked
 
     private void trainMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_trainMouseClicked
@@ -1523,6 +1673,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         resetColor(spend);
 
         resetColor(media);
+        resetColor(jPanel2);
     }//GEN-LAST:event_trainMouseClicked
 
     private void spendMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_spendMouseClicked
@@ -1537,6 +1688,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         resetColor(home);
 
         resetColor(media);
+        resetColor(jPanel2);
     }//GEN-LAST:event_spendMouseClicked
 
     private void userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userMouseClicked
@@ -1553,6 +1705,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
 
         resetColor(media);
+        resetColor(jPanel2);
     }//GEN-LAST:event_userMouseClicked
 
     private void frameViewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_frameViewMouseClicked
@@ -1624,9 +1777,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
             JOptionPane.showMessageDialog(rootPane,
                 "Chọn phần thông tin bạn muốn chỉnh sửa rồi chỉnh sửa !");
         } else {
-            EditQuy editQuy = new EditQuy(this, rootPaneCheckingEnabled);
-            editQuy.setDefaultData(listQuy.get(indexQuy));
-            editQuy.setVisible(true);
+            new EditQuy(this, rootPaneCheckingEnabled, indexQuy).setVisible(true);
         }
         showDataQuy();
     }//GEN-LAST:event_suachitieuActionPerformed
@@ -1691,6 +1842,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 JOptionPane.showMessageDialog(rootPane, "Xóa thanh cong!");
                 //            }
         }
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }//GEN-LAST:event_xoaDTActionPerformed
 
     private void suaDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaDTActionPerformed
@@ -1725,6 +1881,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
             showData(listHDTT, modelHDTT);
         }
         showDataHDTT();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }//GEN-LAST:event_xoaTTActionPerformed
 
     private void suaTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaTTActionPerformed
@@ -1818,6 +1979,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
             showData(listCSVC, modelCSVC);
         }
         showDataCSVC();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }//GEN-LAST:event_xoaCSVCActionPerformed
 
     private void suaCSVCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaCSVCActionPerformed
@@ -1921,6 +2087,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
             }
         }
         showDataThanhVien();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+
     }//GEN-LAST:event_btnXoaThanhVienActionPerformed
 
     private void btnSuaThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaThanhVienActionPerformed
@@ -1938,6 +2107,8 @@ public class TrangChu extends javax.swing.JFrame implements View {
             editTV.setVisible(true);
         }
         showDataThanhVien();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
     }//GEN-LAST:event_btnSuaThanhVienActionPerformed
 
     private void btnThemTVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTVActionPerformed
@@ -1984,6 +2155,34 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private void bttimkiemmedia1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemmedia1ActionPerformed
         showDataHDTT();
     }//GEN-LAST:event_bttimkiemmedia1ActionPerformed
+
+    private void themBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themBanActionPerformed
+        // TODO add your handling code here:
+        new AddBan(this, rootPaneCheckingEnabled).setVisible(true);
+    }//GEN-LAST:event_themBanActionPerformed
+
+    private void xoaBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoaBanActionPerformed
+        // TODO add your handling code here:
+        int vitri = tblBan.getSelectedRow();
+        if(vitri == -1){
+            JOptionPane.showMessageDialog(rootPane, "Hãy chọn một dòng rồi ấn nút xoá !");
+        }
+        else if(listBan.size() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
+        }
+        else{
+            if(new Dao().removeBan(tblBan.getValueAt(vitri, 0).toString())){
+                listBan.remove(vitri);
+            }
+            showData(listBan, modelBan);
+        }
+        showDataBan();
+        
+    }//GEN-LAST:event_xoaBanActionPerformed
+
+    private void txtThanhVienHDDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhVienHDDTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtThanhVienHDDTActionPerformed
     
     void setColor(JPanel panel){
         panel.setBackground(new Color(242, 242, 242));
@@ -2029,6 +2228,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Ban;
     private javax.swing.JPanel CSVC;
     private javax.swing.JPanel Home;
     private javax.swing.JPanel MEdia;
@@ -2064,7 +2264,6 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -2100,10 +2299,14 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
@@ -2111,13 +2314,16 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel media;
@@ -2127,15 +2333,18 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JRadioButton rbtnTruongBan;
     private javax.swing.JRadioButton rbtsoluong;
     private javax.swing.JPanel spend;
+    private javax.swing.JButton suaBan;
     private javax.swing.JButton suaCSVC;
     private javax.swing.JButton suaDT;
     private javax.swing.JButton suaTT;
     private javax.swing.JButton suachitieu;
     private javax.swing.JTable tableQuanLyChiTieu;
+    private javax.swing.JTable tblBan;
     private javax.swing.JTable tblCSVC;
     private javax.swing.JTable tblHDDT;
     private javax.swing.JTable tblTT;
     private javax.swing.JTable tblThanhVien;
+    private javax.swing.JButton themBan;
     private javax.swing.JButton themCSVC;
     private javax.swing.JButton themDT;
     private javax.swing.JButton themTT;
@@ -2153,6 +2362,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private javax.swing.JTextField txttim;
     private javax.swing.JTextField txttimkiemchitieu;
     private javax.swing.JPanel user;
+    private javax.swing.JButton xoaBan;
     private javax.swing.JButton xoaCSVC;
     private javax.swing.JButton xoaDT;
     private javax.swing.JButton xoaTT;
@@ -2169,12 +2379,29 @@ public class TrangChu extends javax.swing.JFrame implements View {
             txtTongThanhVien.setText(String.valueOf(tong));
     }
     
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    private void showDataBan() {
+        this.showData(listBan, modelBan);
+    }
+   /////////////////////////////////////////////////////////////////////////////////////////////// 
+    
+    public void addBan(Ban t) {
+        if(new Dao().addBan(t)){
+                    listBan.add(t);
+        }
+        this.showData(listBan, modelBan);
+        showDataBan();
+    }
+    
     public void addThanhVien(ThanhVien t) {
         if(new Dao().addUser(t)){
                     listTV.add(t);
         }
         this.showData(listTV, modelTV);
         showDataThanhVien();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        
     }
     private void showDataQuy(){
         this.showData(listQuy, modelQuy);
@@ -2256,10 +2483,16 @@ public class TrangChu extends javax.swing.JFrame implements View {
         }
         this.showData(listCSVC, modelCSVC);
         showDataCSVC(); 
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
+        
     }
 
-    
     private void showDataHDTT(){
+        modelHDTT.setNumRows(0);
         this.showData(listHDTT, modelHDTT);
         int SoThanhVien = 0;
         double TongChiPhi = 0;
@@ -2272,7 +2505,8 @@ public class TrangChu extends javax.swing.JFrame implements View {
         txtTongThanhVienTT.setText(String.valueOf(SoThanhVien));
         txtTongChiPhiTT.setText(String.valueOf(TongChiPhi));
     }
-    private void showDataHDDT(){
+    private void showDataHDDT(){        
+        modelHDDT.setNumRows(0);
         this.showData(listHD, modelHDDT);
         int SoThanhVien = 0;
         double TongChiPhi = 0;
@@ -2303,18 +2537,28 @@ public class TrangChu extends javax.swing.JFrame implements View {
     public void addHD(HoatDong a) {
         if(new Dao().addTraining(a)){
             listHD.add(a);
-           JOptionPane.showMessageDialog(this, "Thêm thành công hoạt động đào tạo mới!");
+           
         }
-        showData(listHD, modelHDDT);
+        this.showData(listHD, modelHDDT);
         showDataHDDT();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }
 
     public void addTT(HoatDong tt) {
         if(new Dao().addMedia(tt)){
              listHDTT.add(tt);
         }
-        showData(listHDTT, modelHDTT);
+        this.showData(listHDTT, modelHDTT);
         showDataHDTT();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }
 
     void updateThanhVien(ThanhVien tv) {
@@ -2334,17 +2578,22 @@ public class TrangChu extends javax.swing.JFrame implements View {
         }
         showDataThanhVien();
     }
-    public void updataQuy(Quy q){
-        Quy qSelect = listQuy.get(indexQuy);
-        qSelect.setMaQuy(q.getMaQuy());
-        qSelect.setTenHD(q.getTenHD());
-        qSelect.setThoiGian(q.getThoiGian());
-        qSelect.setChiPhi(q.getChiPhi());
-        if(new Dao().updateSpend(qSelect.getMaQuy(), q)){
-                 listQuy.set(indexQuy, qSelect);
+    public void updataQuy(Quy q, int indexQuy){
+//        Quy qSelect = listQuy.get(indexQuy);
+//        qSelect.setMaQuy(q.getMaQuy());
+//        qSelect.setTenHD(q.getTenHD());
+//        qSelect.setThoiGian(q.getThoiGian());
+//        qSelect.setChiPhi(q.getChiPhi());
+//        if(new Dao().updateSpend(qSelect.getMaQuy(), q)){
+//                 listQuy.set(indexQuy, qSelect);
+//        }
+//        showDataQuy();
+        if(new Dao().updateSpend(q.getMaQuy(), q)){
+                    listQuy.set(indexQuy, q);
         }
+        showData(listQuy, modelQuy);
         showDataQuy();
-        
+
     }
     public void editCSVC(CoSoVC cs, int vt) {
         if(new Dao().updateInfras(cs.getMaCSVC(), cs)){
@@ -2352,6 +2601,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
         }
         showData(listCSVC, modelCSVC);
         showDataCSVC();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }
 
     public void editHD(HoatDong a, int vt) {
@@ -2360,6 +2614,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
         }
         showData(listHD, modelHDDT);
         showDataHDDT();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }
 
     public void editHDTT(HoatDong tt, int vt) {
@@ -2368,6 +2627,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
         }
         showData(listHDTT, modelHDTT);
         showDataHDTT();
+        listBan = new Dao().getBan();
+        this.showData(listBan, modelBan);
+        listQuy = new Dao().getSpend();
+        this.showData(listQuy, modelQuy);
+        showDataQuy();
     }
     
     
@@ -2378,20 +2642,20 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 ThanhVien tv = (ThanhVien)t;
                 model.addRow(new Object[]{
                     tv.getMaTV(), tv.getTenTV(), tv.getKhoa(), tv.getChuyenNghanh(), tv.getBan(),
-                    tv.getNgaySinh(), tv.getGioiTinh(), tv.getEmail(), tv.getSdt(), tv.getChucDanh()
+                    tv.getNgaySinh(), tv.getGioiTinh(), tv.getEmail(), tv.getSdt(), tv.getChucDanh(), tv.getMaBan()
                 });
             }
             if(t instanceof Quy){
                 Quy q = (Quy)t;
                 model.addRow(new Object[]{
-                    q.getMaQuy() , q.getTenHD() , q.getThoiGian() , q.getChiPhi()
+                    q.getMaQuy() , q.getTenHD() , q.getThoiGian() , q.getChiPhi(), q.getTongQuy()
                 });
             }
             if (t instanceof HoatDong) {
                 HoatDong z = (HoatDong) t;
                 if (z.getLoaiHD().equalsIgnoreCase("Hoat dong dao tao")) {
                     model.addRow(new Object[]{
-                       z.getMaHD(), z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi()
+                       z.getMaHD(), z.getTenHD(), z.getThoiGian(), z.getDiaDiem(), z.getMoTa(), z.getSoThanhVien(), z.getKinhPhi(), z.getMaBan()
                     });
                 }
             }
@@ -2399,18 +2663,26 @@ public class TrangChu extends javax.swing.JFrame implements View {
                 HoatDong a = (HoatDong) t;
                 if (a.getLoaiHD().equalsIgnoreCase("Hoat dong Truyen Thong")) {
                     model.addRow(new Object[]{
-                        a.getMaHD(), a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi()
+                        a.getMaHD(), a.getTenHD(), a.getDanhGia(), a.getMoTa(), a.getSoThanhVien(), a.getDiaDiem(), a.getThoiGian(), a.getKinhPhi(), a.getMaBan()
                     });
                 }
             }
             if(t instanceof CoSoVC){
                 CoSoVC csvc = (CoSoVC)t;
                 model.addRow(new Object[]{
-                    csvc.getMaCSVC(), csvc.getTenCSVC(), csvc.getTrangThai(), csvc.getSoLuong(), csvc.getChiPhi()
+                    csvc.getMaCSVC(), csvc.getTenCSVC(), csvc.getTrangThai(), csvc.getSoLuong(), csvc.getChiPhi(), csvc.getMaBan()
+                });
+            }
+            if(t instanceof Ban){
+                Ban ban = (Ban)t;
+                model.addRow(new Object[]{
+                    ban.getMaBan(), ban.getTenBan(), ban.getSoLuongTv(), ban.getTongQuy(), ban.getMaQuy()
                 });
             }
         }
     }
+
+    
     
     
    

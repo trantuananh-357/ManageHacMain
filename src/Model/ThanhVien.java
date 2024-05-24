@@ -5,13 +5,12 @@ import java.io.Serializable;
 //maTv,tenTv,khóa,chuyenNganh,ngaySinh,gmail,sdt,gTinh,vaiTro,;
 public class ThanhVien implements Serializable{
 
-    private String maTV, tenTV, khoa, chuyenNghanh, ban, ngaySinh, gioiTinh, email, sdt, chucDanh;
+    private String maTV, tenTV, khoa, chuyenNghanh, ban, ngaySinh, gioiTinh, email, sdt, chucDanh, maBan;
 
     public ThanhVien() {
-        maTV = tenTV = khoa = chuyenNghanh = ban = ngaySinh = gioiTinh = email = sdt = chucDanh = "";
     }
 
-    public ThanhVien(String maTV, String tenTV, String khoa, String chuyenNghanh, String ban, String ngaySinh, String gioiTinh, String email, String sdt, String chucDanh) {
+    public ThanhVien(String maTV, String tenTV, String khoa, String chuyenNghanh, String ban, String ngaySinh, String gioiTinh, String email, String sdt, String chucDanh, String maBan) {
         this.maTV = maTV;
         this.tenTV = tenTV;
         this.khoa = khoa;
@@ -22,7 +21,9 @@ public class ThanhVien implements Serializable{
         this.email = email;
         this.sdt = sdt;
         this.chucDanh = chucDanh;
+        this.maBan = maBan;
     }
+
 
     public String getMaTV() {
         return maTV;
@@ -103,4 +104,14 @@ public class ThanhVien implements Serializable{
     public void setChucDanh(String chucDanh) {
         this.chucDanh = chucDanh;
     }
+
+    public String getMaBan() {
+        return maBan;
+    }
+
+    public void setMaBan(String maBan) {
+        this.maBan = maBan;
+    }
+    
+    
 }

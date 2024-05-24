@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Model.Ban;
 import Model.CoSoVC;
 import Model.HoatDong;
 import Model.Quy;
@@ -24,10 +25,10 @@ public class Dao {
     public Dao(){
          try{
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url= "jdbc:sqlserver://DESKTOP-35N6B48\\SQLEXPRESS:1433;databaseName=HacClub";
+            String url= "jdbc:sqlserver://LAPTOP-S4TAUB50\\SQLEXPRESS:1433;databaseName=HacClub;trustServerCertificate=true";
 //            String url= "jdbc:sqlserver://TUANANHVU\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
             String username = "sa";
-            String password ="123456789";
+            String password ="123";
             conn = DriverManager.getConnection(url, username, password);
             System.out.println("Ket noi thanh cong");
             
@@ -36,10 +37,91 @@ public class Dao {
             e.printStackTrace();
         }
     }
+    
+    public boolean addBan(Ban s){
+           // String checkSql = "SELECT 1 FROM tblQuy WHERE maQuy = ?";
+
+        String sql = "INSERT INTO tblBan(maBan, tenBan, soLuongTv, tongQuy, maQuy)"
+                + "VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, s.getMaBan());
+            ps.setString(2, s.getTenBan());
+            ps.setInt(3, s.getSoLuongTv());
+            ps.setDouble(4, s.getTongQuy());
+            ps.setString(5, s.getMaQuy());            
+            return ps.executeUpdate() > 0;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
+    
+    public boolean removeBan(String maBan){
+        String delete = "DELETE FROM tblBan Where maBan = ?";
+        try
+        {
+            PreparedStatement ps = conn.prepareStatement(delete);
+            ps.setString(1, maBan);
+            int rowsDeleted = ps.executeUpdate();
+             if (rowsDeleted > 0) {
+            return true; // Trả về true nếu có ít nhất một hàng được xóa
+            } else {
+                return false; // Trả về false nếu không có hàng nào được xóa
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public boolean updateBan(String maBan, Ban newBan){
+        String update = "Update tblBan SET tenBan = ?, soLuongTv = ?, tongQuy = ?, maQuy = ?  WHERE maBan = ?";
+        try {
+        PreparedStatement ps = conn.prepareStatement(update);
+        ps.setString(1, newBan.getTenBan());
+        ps.setInt(2, newBan.getSoLuongTv());
+        ps.setDouble(3, newBan.getTongQuy());
+        ps.setString(4, newBan.getMaQuy());
+        ps.setString(5, maBan);
+        
+        return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public ArrayList<Ban> getBan(){
+        ArrayList<Ban> list = new ArrayList<>();
+        String sql = "SELECT * FROM tblBan";
+        
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Ban s = new Ban();
+                s.setMaBan(rs.getString("maBan"));
+                s.setTenBan(rs.getString("tenBan"));
+                s.setSoLuongTv(rs.getInt("soLuongTv"));
+                s.setTongQuy(rs.getDouble("tongQuy"));
+                s.setMaQuy(rs.getString("maQuy"));
+                list.add(s);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
     public boolean addUser(ThanhVien s){
         
-        String sql = "INSERT INTO tblThanhVien(maTV, tenTV, khoa, chuyenNghanh,ban, ngaySinh, gioiTinh, email, sdt, chucDanh) "
-                + "VALUES(?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tblThanhVien(maTV, tenTV, khoa, chuyenNghanh,ban, ngaySinh, gioiTinh, email, sdt, chucDanh, maBan) "
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, s.getMaTV());
@@ -52,6 +134,7 @@ public class Dao {
             ps.setString(8, s.getEmail());
             ps.setString(9, s.getSdt());
             ps.setString(10, s.getChucDanh());
+            ps.setString(11, s.getMaBan());
             
             return ps.executeUpdate() > 0;
             
@@ -79,8 +162,9 @@ public class Dao {
         }
         return false;
     }
+    
     public boolean updateUser(String maTV, ThanhVien newThanhVien){
-        String update = "Update tblThanhVien SET tenTV = ?, khoa = ?, chuyenNghanh = ?, ban = ?, ngaySinh = ?, gioiTinh = ?, email = ?, sdt = ?, chucDanh = ? WHERE maTV = ?";
+        String update = "Update tblThanhVien SET tenTV = ?, khoa = ?, chuyenNghanh = ?, ban = ?, ngaySinh = ?, gioiTinh = ?, email = ?, sdt = ?, chucDanh = ?, maBan = ? WHERE maTV = ?";
         try {
         PreparedStatement ps = conn.prepareStatement(update);
         ps.setString(1, newThanhVien.getTenTV());
@@ -92,7 +176,8 @@ public class Dao {
         ps.setString(7, newThanhVien.getEmail());
         ps.setString(8, newThanhVien.getSdt());
         ps.setString(9, newThanhVien.getChucDanh());
-        ps.setString(10, maTV);
+        ps.setString(10, newThanhVien.getMaBan());
+        ps.setString(11, maTV);
         
         return ps.executeUpdate() > 0;
         } catch (Exception e) {
@@ -100,6 +185,7 @@ public class Dao {
         }
         return false;
     }
+    
     public ArrayList<ThanhVien> getUser(){
         ArrayList<ThanhVien> list = new ArrayList<>();
         String sql = "SELECT * FROM tblThanhVien";
@@ -119,6 +205,7 @@ public class Dao {
                 s.setEmail(rs.getString("email"));
                 s.setSdt(rs.getString("sdt"));
                 s.setChucDanh(rs.getString("chucDanh"));
+                s.setMaBan(rs.getString("maBan"));
                 list.add(s);
             }
         } catch (Exception e) {
@@ -127,9 +214,9 @@ public class Dao {
         
         return list;
     }
-    ////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////CSVC
     public boolean addInfras(CoSoVC a){
-        String sql = "INSERT INTO tblCSVC(maCSVC, tenCSVC, trangThai, soLuong, kinhPhi)" + "VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO tblCSVC(maCSVC, tenCSVC, trangThai, soLuong, kinhPhi, maBan)" + "VALUES(?,?,?,?,?,?)";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, a.getMaCSVC());
@@ -137,6 +224,7 @@ public class Dao {
             ps.setString(3, a.getTrangThai());
             ps.setInt(4, a.getSoLuong());
             ps.setDouble(5, a.getChiPhi());
+            ps.setString(6, a.getMaBan());
             return ps.executeUpdate() > 0;
         }
         catch(Exception e){
@@ -176,6 +264,7 @@ public class Dao {
                 s.setTrangThai(rs.getString("trangThai"));
                 s.setSoLuong(rs.getInt("soLuong"));
                 s.setChiPhi(rs.getDouble("kinhPhi"));
+                s.setMaBan(rs.getString("maBan"));
                 list.add(s);
             }
         } catch (Exception e) {
@@ -184,24 +273,28 @@ public class Dao {
         
         return list;
     }
+    
+     
      public boolean updateInfras(String maCSVC, CoSoVC newCSVC){
-        String update = "Update tblCSVC SET tenCSVC = ?, trangThai = ?, soLuong = ?, kinhPhi = ? WHERE maCSVC = ?";
+        String update = "Update tblCSVC SET tenCSVC = ?, trangThai = ?, soLuong = ?, kinhPhi = ?, maBan = ? WHERE maCSVC = ?";
         try {
         PreparedStatement ps = conn.prepareStatement(update);
-        ps.setString(5, newCSVC.getMaCSVC());
+        ps.setString(6, newCSVC.getMaCSVC());
         ps.setString(1, newCSVC.getTenCSVC());
         ps.setString(2, newCSVC.getTrangThai());
         ps.setInt(3, newCSVC.getSoLuong());
         ps.setDouble(4, newCSVC.getChiPhi());
+        ps.setString(5, newCSVC.getMaBan());
+
         return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-     /////////////////////////////////Media
+     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Media
      public boolean addMedia(HoatDong a){
-        String sql = "INSERT INTO tblHoatDong(maHD, tenHD, loaiHD, thoiGian, soThanhVien, kinhPhi, diaDiem, moTa, danhGia)" + "VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tblHoatDong(maHD, tenHD, loaiHD, thoiGian, soThanhVien, kinhPhi, diaDiem, moTa, danhGia, maBan)" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, a.getMaHD());
@@ -213,7 +306,7 @@ public class Dao {
             ps.setString(7, a.getDiaDiem());
             ps.setString(8, a.getMoTa());
             ps.setString(9, a.getDanhGia());
-
+            ps.setString(10, a.getMaBan());
             return ps.executeUpdate() > 0;
         }
         catch(Exception e){
@@ -240,7 +333,7 @@ public class Dao {
         return false;
      }
      public ArrayList<HoatDong> getMedia(){
-        ArrayList<HoatDong> list = new ArrayList<>();
+        ArrayList<HoatDong> listt = new ArrayList<>();
         String sql = "SELECT * FROM tblHoatDong";
         
         try {
@@ -257,17 +350,17 @@ public class Dao {
                 s.setDiaDiem(rs.getString("diaDiem"));
                 s.setMoTa(rs.getString("moTa"));
                 s.setDanhGia(rs.getString("danhGia"));
-
-                list.add(s);
+                s.setMaBan(rs.getString("maBan"));
+                listt.add(s);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        return list;
+        return listt;
     }
+     
      public boolean updateMedia(String maHD, HoatDong newHoatDong){
-        String update = "Update tblHoatDong SET tenHD = ?, loaiHD = ?, thoiGian = ?, soThanhVien = ?,  kinhPhi = ?, diaDiem = ?, moTa = ?, danhGia = ?, WHERE maHD = ?";
+        String update = "Update tblHoatDong SET tenHD = ?, loaiHD = ?, thoiGian = ?, soThanhVien = ?,  kinhPhi = ?, diaDiem = ?, moTa = ?, danhGia = ?, maBan = ? WHERE maHD = ?";
         try {
         PreparedStatement ps = conn.prepareStatement(update);
         ps.setString(1, newHoatDong.getTenHD());
@@ -278,7 +371,8 @@ public class Dao {
         ps.setString(6, newHoatDong.getDiaDiem());
         ps.setString(7, newHoatDong.getMoTa());
         ps.setString(8, newHoatDong.getDanhGia());
-        ps.setString(9, newHoatDong.getMaHD());
+        ps.setString(9, newHoatDong.getMaBan());
+        ps.setString(10, newHoatDong.getMaHD());
         
         return ps.executeUpdate() > 0;
         } catch (Exception e) {
@@ -286,10 +380,10 @@ public class Dao {
         }
         return false;
     }
-    //////////////////////Traning
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Traning
      
      public boolean addTraining(HoatDong a){
-        String sql = "INSERT INTO tblHoatDongDaoTao(maHD, tenHD, loaiHD, thoiGian, soThanhVien, kinhPhi, diaDiem, moTa, danhGia)" + "VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tblHoatDongDaoTao(maHD, tenHD, loaiHD, thoiGian, soThanhVien, kinhPhi, diaDiem, moTa, danhGia, maBan)" + "VALUES(?,?,?,?,?,?,?,?,?,?)";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, a.getMaHD());
@@ -301,7 +395,7 @@ public class Dao {
             ps.setString(7, a.getDiaDiem());
             ps.setString(8, a.getMoTa());
             ps.setString(9, a.getDanhGia());
-
+            ps.setString(10, a.getMaBan());
             return ps.executeUpdate() > 0;
         }
         catch(Exception e){
@@ -328,7 +422,7 @@ public class Dao {
         return false;
      }
      public ArrayList<HoatDong> getTraining(){
-        ArrayList<HoatDong> list = new ArrayList<>();
+        ArrayList<HoatDong> lists = new ArrayList<>();
         String sql = "SELECT * FROM tblHoatDongDaoTao";
         
         try {
@@ -345,17 +439,17 @@ public class Dao {
                 s.setDiaDiem(rs.getString("diaDiem"));
                 s.setMoTa(rs.getString("moTa"));
                 s.setDanhGia(rs.getString("danhGia"));
-
-                list.add(s);
+                s.setMaBan(rs.getString("maBan"));
+                lists.add(s);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         
-        return list;
+        return lists;
     }
      public boolean updateTraining(String maHD, HoatDong newHoatDong){
-        String update = "Update tblHoatDongDaoTao SET tenHD = ?, loaiHD = ?, thoiGian = ?, soThanhVien = ?,  kinhPhi = ?, diaDiem = ?, moTa = ?, danhGia = ?, WHERE maHD = ?";
+        String update = "Update tblHoatDongDaoTao SET tenHD = ?, loaiHD = ?, thoiGian = ?, soThanhVien = ?,  kinhPhi = ?, diaDiem = ?, moTa = ?, danhGia = ?, maBan = ? WHERE maHD = ?";
         try {
         PreparedStatement ps = conn.prepareStatement(update);
         ps.setString(1, newHoatDong.getTenHD());
@@ -366,15 +460,15 @@ public class Dao {
         ps.setString(6, newHoatDong.getDiaDiem());
         ps.setString(7, newHoatDong.getMoTa());
         ps.setString(8, newHoatDong.getDanhGia());
-        ps.setString(9, newHoatDong.getMaHD());
-        
+        ps.setString(9, newHoatDong.getMaBan());
+        ps.setString(10, newHoatDong.getMaHD());
         return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-     //////////////Spend
+     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////Spend
      public boolean addSpend(Quy a){
         String sql = "INSERT INTO tblQuy(maQuy, tenHD, thoiGian, chiPhi, tongQuy)" + "VALUES(?,?,?,?,?)";
         try{
