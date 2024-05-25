@@ -2215,10 +2215,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
 //            JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm ban");
 //        } else if(vitri == -1){
 //            JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng trước");
-//        } else if ()
-//        
+//        } 
 //        else{
-//            //new EditCSVC(this, rootPaneCheckingEnabled, vitri).setVisible(true);
+//            new EditBan(this, rootPaneCheckingEnabled, vitri).setVisible(true);
 //        }
 //        showDataBan();
     }//GEN-LAST:event_suaBanActionPerformed
@@ -2466,7 +2465,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
         showDataQuy();
     }
     private void showDataCSVC(){
-        modelCSVC.setNumRows(0);
+      //  modelCSVC.setNumRows(0);
         this.showData(listCSVC, modelCSVC);
         int SoLuongCSVC = 0;
         double TongChiPhi = 0;

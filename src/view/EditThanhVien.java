@@ -169,16 +169,16 @@ public class EditThanhVien extends javax.swing.JDialog {
                             .addComponent(btnHuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(134, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addGap(231, 231, 231)
                 .addComponent(jLabel11)
-                .addGap(0, 402, Short.MAX_VALUE))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(8, 8, 8)
                 .addComponent(jLabel11)
-                .addGap(14, 14, 14)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel6)
@@ -253,7 +253,7 @@ public class EditThanhVien extends javax.swing.JDialog {
         String ban = cbBan.getSelectedItem().toString();
         String ngay = txtNgaySinh.getText();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        String maban = txtMaBan.getText();//////////////////////////////////////
+        String maban = txtMaBan.getText();
         Date ngaySinh = null;
         String gioiTinh = "";
         if (rbtnGioiTinhNam.isSelected()) {
@@ -324,7 +324,7 @@ public class EditThanhVien extends javax.swing.JDialog {
             if (isOk) {
                 ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh, maban);
                 home.updateThanhVien(tv);
-                JOptionPane.showMessageDialog(rootPane, "Sửa thành công thành viên mới !");
+                JOptionPane.showMessageDialog(rootPane, "Sửa thành công thành viên!");
                 this.dispose();
             }
         }
@@ -416,6 +416,7 @@ public class EditThanhVien extends javax.swing.JDialog {
         txtGmail.setText(tv.getEmail());
         txtSDT.setText(tv.getSdt());
         cbChucDanh.setSelectedItem(tv.getChucDanh());
+        txtMaBan.setText(tv.getMaBan());
     }
 
     private boolean isValidEmailFormat(String email) {
