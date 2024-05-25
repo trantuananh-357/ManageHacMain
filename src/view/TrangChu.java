@@ -1271,6 +1271,11 @@ public class TrangChu extends javax.swing.JFrame implements View {
         });
 
         suaBan.setText("Sửa");
+        suaBan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suaBanActionPerformed(evt);
+            }
+        });
 
         xoaBan.setText("Xóa");
         xoaBan.addActionListener(new java.awt.event.ActionListener() {
@@ -1728,6 +1733,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
     private void bttimkiemchitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bttimkiemchitieuActionPerformed
         // TODO add your handling code here:
+        
         listTKCT.removeAll(listTKCT);
         int flag = 0;
         if(txttimkiemchitieu.getText().trim().equals("")){
@@ -1755,13 +1761,28 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
     private void xoachitieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xoachitieuActionPerformed
         // TODO add your handling code here:
+                       
         int rmQuy = tableQuanLyChiTieu.getSelectedRow();
         if(rmQuy == -1){
-            JOptionPane.showMessageDialog(rootPane, "Bạn chưac họn thông tin cần xóa");
+            JOptionPane.showMessageDialog(rootPane, "Bạn chưa chọn thông tin cần xóa");
         }
-        else{
-            if(new Dao().removeSpend(tableQuanLyChiTieu.getValueAt(rmQuy, 0).toString())){
-                listQuy.remove(rmQuy);
+        else if(listQuy.size() == 0){
+            JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
+        }
+        else if(rmQuy != -1) {
+            int d=0;
+            for(var z : new Dao().getBan()){
+                if(z.getMaQuy().equalsIgnoreCase(listQuy.get(rmQuy).getMaQuy())){
+                    d=-1;
+                    JOptionPane.showMessageDialog(rootPane, "Vẫn còn ban sử dụng quỹ, yêu cầu chuyển quỹ khác!");
+                    break;
+                }
+            }
+            if (d!=-1) {
+                if(new Dao().removeSpend(tableQuanLyChiTieu.getValueAt(rmQuy, 0).toString())){
+                    listQuy.remove(rmQuy);
+                }
+                showData(listQuy, modelQuy);
             }
         }
         showDataQuy();
@@ -1839,7 +1860,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
                     listHD.remove(vitri);
                 }
                 showData(listHD, modelHDDT);
-                JOptionPane.showMessageDialog(rootPane, "Xóa thanh cong!");
+                JOptionPane.showMessageDialog(rootPane, "Xóa thành công!");
                 //            }
         }
         listBan = new Dao().getBan();
@@ -2170,6 +2191,9 @@ public class TrangChu extends javax.swing.JFrame implements View {
         else if(listBan.size() == 0){
             JOptionPane.showMessageDialog(rootPane, "Không có dữ liệu để xóa");
         }
+        else if(listBan.get(vitri).getSoLuongTv()>0) {
+            JOptionPane.showMessageDialog(rootPane, "Vẫn còn thành viên trong ban, yêu cầu chuyển ban khác!");
+        }
         else{
             if(new Dao().removeBan(tblBan.getValueAt(vitri, 0).toString())){
                 listBan.remove(vitri);
@@ -2183,6 +2207,21 @@ public class TrangChu extends javax.swing.JFrame implements View {
     private void txtThanhVienHDDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThanhVienHDDTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtThanhVienHDDTActionPerformed
+
+    private void suaBanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suaBanActionPerformed
+        // TODO add your handling code here:
+//        int vitri = tblBan.getSelectedRow();
+//        if(listBan.size() == 0){
+//            JOptionPane.showMessageDialog(rootPane, "Hãy nhập thêm ban");
+//        } else if(vitri == -1){
+//            JOptionPane.showMessageDialog(rootPane, "Hãy chọn 1 dòng trước");
+//        } else if ()
+//        
+//        else{
+//            //new EditCSVC(this, rootPaneCheckingEnabled, vitri).setVisible(true);
+//        }
+//        showDataBan();
+    }//GEN-LAST:event_suaBanActionPerformed
     
     void setColor(JPanel panel){
         panel.setBackground(new Color(242, 242, 242));
@@ -2478,8 +2517,7 @@ public class TrangChu extends javax.swing.JFrame implements View {
 
     public void addCSVC(CoSoVC cs) {
         if(new Dao().addInfras(cs)){
-             listCSVC.add(cs);
-             
+             listCSVC.add(cs);   
         }
         this.showData(listCSVC, modelCSVC);
         showDataCSVC(); 
@@ -2572,22 +2610,14 @@ public class TrangChu extends javax.swing.JFrame implements View {
         thanhVienDaChon.setGioiTinh(tv.getGioiTinh());
         thanhVienDaChon.setEmail(tv.getEmail());
         thanhVienDaChon.setSdt(tv.getSdt());
-        thanhVienDaChon.setChucDanh(tv.getChucDanh());
+        thanhVienDaChon.setMaBan(tv.getMaBan());
+        thanhVienDaChon.setChucDanh(tv.getChucDanh());      
         if(new Dao().updateUser(tblThanhVien.getValueAt(indexThanhVien, 0).toString(), thanhVienDaChon)){
                     listTV.set(indexThanhVien, thanhVienDaChon);
         }
         showDataThanhVien();
     }
     public void updataQuy(Quy q, int indexQuy){
-//        Quy qSelect = listQuy.get(indexQuy);
-//        qSelect.setMaQuy(q.getMaQuy());
-//        qSelect.setTenHD(q.getTenHD());
-//        qSelect.setThoiGian(q.getThoiGian());
-//        qSelect.setChiPhi(q.getChiPhi());
-//        if(new Dao().updateSpend(qSelect.getMaQuy(), q)){
-//                 listQuy.set(indexQuy, qSelect);
-//        }
-//        showDataQuy();
         if(new Dao().updateSpend(q.getMaQuy(), q)){
                     listQuy.set(indexQuy, q);
         }

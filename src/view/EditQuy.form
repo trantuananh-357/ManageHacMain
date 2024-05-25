@@ -52,7 +52,7 @@
                           <Component id="txtmachitieu" alignment="0" max="32767" attributes="0"/>
                           <Component id="cbbhoatdong" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtthoigian" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtchiphi" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -80,7 +80,7 @@
               </Group>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtchiphi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -129,10 +129,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Chi ph&#xed;:"/>
+        <Property name="text" type="java.lang.String" value="T&#x1ed5;ng qu&#x1ef9;:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtchiphi">
+    <Component class="javax.swing.JTextField" name="txt">
     </Component>
     <Component class="javax.swing.JButton" name="btsua">
       <Properties>

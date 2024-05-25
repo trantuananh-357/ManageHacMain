@@ -202,6 +202,8 @@ private TrangChu home;
             
             if (d==0) throw new Exception("Không tồn tại mã ban");
             home.addCSVC(x);
+            JOptionPane.showMessageDialog(this, "Thêm thành công CSVC mới!");
+            this.dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }

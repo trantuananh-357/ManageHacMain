@@ -45,7 +45,7 @@ public class EditQuy extends javax.swing.JDialog {
         txtmachitieu.setEditable(false);
         cbbhoatdong.setSelectedItem(q.getTenHD());
         txtthoigian.setText(q.getThoiGian());
-        txtchiphi.setText("" + q.getChiPhi());
+        txt.setText("" + q.getTongQuy());
     }
 
     @SuppressWarnings("unchecked")
@@ -59,7 +59,7 @@ public class EditQuy extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         txtthoigian = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtchiphi = new javax.swing.JTextField();
+        txt = new javax.swing.JTextField();
         btsua = new javax.swing.JButton();
         bthuybo = new javax.swing.JButton();
 
@@ -73,7 +73,7 @@ public class EditQuy extends javax.swing.JDialog {
 
         jLabel3.setText("Thời gian:");
 
-        jLabel4.setText("Chi phí:");
+        jLabel4.setText("Tổng quỹ:");
 
         btsua.setText("Sửa");
         btsua.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class EditQuy extends javax.swing.JDialog {
                             .addComponent(txtmachitieu)
                             .addComponent(cbbhoatdong, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtthoigian)
-                            .addComponent(txtchiphi))))
+                            .addComponent(txt))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -136,7 +136,7 @@ public class EditQuy extends javax.swing.JDialog {
                     .addComponent(txtthoigian, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtchiphi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -156,7 +156,7 @@ public class EditQuy extends javax.swing.JDialog {
         String ngay = txtthoigian.getText();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date ngayChiTieu = null;
-        Double chitieu = Double.parseDouble(txtchiphi.getText());
+        Double tongquy = Double.parseDouble(txt.getText());
      //   Double tongquy = Double.parseDouble(txt.getText());
         int maxLength = 30;
         String pattern = "^[a-zA-Z0-9]+$";
@@ -192,16 +192,23 @@ public class EditQuy extends javax.swing.JDialog {
                 isOk = false;
             }
         }
-        else if (chitieu.toString().trim().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập khoan chi tieu!");
+        else if (tongquy.toString().trim().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Vui lòng nhập tổng quỹ!");
             isOk = false;
         }
         if(isOk){
-          //  Quy q = new Quy(ma, ten, ngay, chitieu);
-          ///  home.updataQuy(q);
-            JOptionPane.showMessageDialog(rootPane, "Chinh sua thanh cong");
+            try {
+                q.setMaQuy(ma);
+                q.setTenHD(ten);
+                q.setThoiGian(ngay);
+                q.setTongQuy(tongquy);
+                home.updataQuy(q, vitri);
+                JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công!");
+                this.dispose();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            }
         }
-        
     }//GEN-LAST:event_btsuaActionPerformed
 
     private void bthuyboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bthuyboActionPerformed
@@ -259,7 +266,7 @@ public class EditQuy extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField txtchiphi;
+    private javax.swing.JTextField txt;
     private javax.swing.JTextField txtmachitieu;
     private javax.swing.JTextField txtthoigian;
     // End of variables declaration//GEN-END:variables

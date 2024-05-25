@@ -250,17 +250,8 @@ public class AddTruyenThong extends javax.swing.JDialog {
             if (flag) {
                 home.addTT(tt);
                 JOptionPane.showMessageDialog(this, "Thêm thành công sự kiện mới.");
+                this.dispose();
             }
-            // Reset các ô dữ liệu về trống
-            txttenSK.setText("");
-            txtdiaDiem.setText("");
-            txtthoiGian.setText("");
-            txtmoTa.setText("");
-            txtSL.setText("");
-            txtchiPhi.setText("");
-            txtDG.setText("");
-            txtMaBan.setText("");
-
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,"Lỗi do: " + e.getMessage());
         }

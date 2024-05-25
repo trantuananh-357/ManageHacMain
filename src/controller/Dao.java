@@ -527,12 +527,12 @@ public class Dao {
         return list;
     }
      public boolean updateSpend(String maQuy, Quy newQuy){
-        String update = "Update tblQuy SET tenHD = ?, thoiGian = ?, chiPhi = ? WHERE maQuy = ?";
+        String update = "Update tblQuy SET tenHD = ?, thoiGian = ?, tongQuy = ? WHERE maQuy = ?";
         try {
         PreparedStatement ps = conn.prepareStatement(update);
         ps.setString(1, newQuy.getTenHD());
         ps.setString(2, newQuy.getThoiGian());
-        ps.setDouble(3, newQuy.getChiPhi());
+        ps.setDouble(3, newQuy.getTongQuy());
         ps.setString(4, newQuy.getMaQuy());
         
         return ps.executeUpdate() > 0;

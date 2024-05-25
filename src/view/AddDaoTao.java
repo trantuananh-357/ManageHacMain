@@ -161,7 +161,7 @@ public class AddDaoTao extends javax.swing.JDialog {
                 x.setMaHD(ma);
             }
             x.setTenHD(txtTenHD.getText());
-            x.setLoaiHD("Hoạt động đào tạo");
+            x.setLoaiHD("Hoat dong dao tao");
             x.setDiaDiem(txtDiaDiem.getText());
             x.setThoiGian(txtThoiGian.getText());
             try {

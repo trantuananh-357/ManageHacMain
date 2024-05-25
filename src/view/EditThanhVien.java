@@ -1,6 +1,7 @@
 package view;
 
 import Model.ThanhVien;
+import controller.Dao;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -136,51 +137,41 @@ public class EditThanhVien extends javax.swing.JDialog {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtTenTV, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(txtMaTV, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                            .addComponent(cbChuyenNghanh, 0, 195, Short.MAX_VALUE)
-                            .addComponent(cbBan, 0, 195, Short.MAX_VALUE)
-                            .addComponent(cbKhoa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel6))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(rbtnGioiTinhNam)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(rbtnGioiTinhNu))
-                                    .addComponent(txtGmail)
-                                    .addComponent(txtSDT)
-                                    .addComponent(cbChucDanh, 0, 194, Short.MAX_VALUE)
-                                    .addComponent(txtNgaySinh))))
-                        .addContainerGap(129, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(btnHuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap(247, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
+                            .addComponent(txtTenTV, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                            .addComponent(txtMaTV, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                            .addComponent(cbChuyenNghanh, 0, 202, Short.MAX_VALUE)
+                            .addComponent(cbBan, 0, 202, Short.MAX_VALUE)
+                            .addComponent(cbKhoa, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtMaBan))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(259, 259, 259)
-                        .addComponent(jLabel11))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(91, 91, 91)
-                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 234, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel6))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(rbtnGioiTinhNam)
+                                .addGap(33, 33, 33)
+                                .addComponent(rbtnGioiTinhNu))
+                            .addComponent(txtGmail)
+                            .addComponent(txtSDT)
+                            .addComponent(cbChucDanh, 0, 194, Short.MAX_VALUE)
+                            .addComponent(txtNgaySinh)
+                            .addComponent(btnHuy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(134, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
+                .addComponent(jLabel11)
+                .addGap(0, 402, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,15 +213,15 @@ public class EditThanhVien extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(cbBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnHoanTat, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -262,6 +253,7 @@ public class EditThanhVien extends javax.swing.JDialog {
         String ban = cbBan.getSelectedItem().toString();
         String ngay = txtNgaySinh.getText();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String maban = txtMaBan.getText();//////////////////////////////////////
         Date ngaySinh = null;
         String gioiTinh = "";
         if (rbtnGioiTinhNam.isSelected()) {
@@ -272,7 +264,7 @@ public class EditThanhVien extends javax.swing.JDialog {
         String gmail = txtGmail.getText();
         String sdt = txtSDT.getText();
         String chucDanh = cbChucDanh.getSelectedItem().toString();
-        String maban = txtMaBan.getText();
+        
         
         String pattern = "^[a-zA-Z0-9]+$";
         String pattern1 = "^[a-zA-Z\\sÀ-ỹ]+$";
@@ -315,11 +307,25 @@ public class EditThanhVien extends javax.swing.JDialog {
             } else if (!isValidPhoneNumber(sdt)) {
                 JOptionPane.showMessageDialog(rootPane, "Số điện thoại không hợp lệ! Vui lòng nhập 10 chữ số.");
                 isOk = false;
+            } else {
+                int d=0;
+                for(var z : new Dao().getBan()){
+                    if(z.getMaBan().equalsIgnoreCase(maban)){
+                        d=-1;
+                        break;
+                    }
+                }             
+                if (d==0) {
+                    JOptionPane.showMessageDialog(rootPane, "Không tồn tại mã ban");
+                    isOk = false;
+                }
             }
+            
             if (isOk) {
                 ThanhVien tv = new ThanhVien(ma, ten, khoa, chuyenNghanh, ban, ngay, gioiTinh, gmail, sdt, chucDanh, maban);
                 home.updateThanhVien(tv);
                 JOptionPane.showMessageDialog(rootPane, "Sửa thành công thành viên mới !");
+                this.dispose();
             }
         }
     }//GEN-LAST:event_btnHoanTatActionPerformed

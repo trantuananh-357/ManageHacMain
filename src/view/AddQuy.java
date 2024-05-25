@@ -28,9 +28,8 @@ public class AddQuy extends javax.swing.JDialog {
     public AddQuy(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-       
-        this.setLocationRelativeTo(null);
-         home = (TrangChu) parent;
+        home = (TrangChu) parent;
+        this.setLocationRelativeTo(null); 
     }
 
    
@@ -157,7 +156,8 @@ public class AddQuy extends javax.swing.JDialog {
                 if(z.getMaQuy().equalsIgnoreCase(x.getMaQuy())){
                     throw new Exception("Trùng mã quỹ");
                 }
-            }              
+            }   
+            x.setTenHD(ten);
             x.setThoiGian(txtthoigian.getText());
             try {
                 ngayChiTieu = dateFormat.parse(x.getThoiGian());
