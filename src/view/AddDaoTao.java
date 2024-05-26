@@ -168,6 +168,7 @@ public class AddDaoTao extends javax.swing.JDialog {
                 ngayChiTieu = dateFormat.parse(x.getThoiGian());
             } catch (ParseException ex) {
                 JOptionPane.showMessageDialog(this, "Thời gian không hợp lệ!VD:10/11/2002");
+                flag = true;
             }
             x.setMoTa(txtMoTa.getText());
             if(txtSoLuongTV.getText().length() == 0){

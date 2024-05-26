@@ -7,7 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.Date; 
 import java.util.List; 
 import javax.swing.JOptionPane;
  
@@ -22,7 +22,7 @@ public class AddQuy extends javax.swing.JDialog {
     
     public AddQuy(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+        initComponents(); 
         home = (TrangChu) parent;
         this.setLocationRelativeTo(null);
     }

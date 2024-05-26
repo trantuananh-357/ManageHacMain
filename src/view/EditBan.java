@@ -3,6 +3,7 @@ package view;
 import Model.Ban;
 import controller.Dao;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -159,23 +160,23 @@ public class EditBan extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        try {
-//            x.setTenBan(txtTenBan.getText());
-//            x.setMaQuy(txtMaQuy.getText());
-//            int d=0;            
-//            for(var z : new Dao().getSpend()){
-//                if(z.getMaQuy().equalsIgnoreCase(x.getMaQuy())){
-//                    d=-1;
-//                    break;
-//                }
-//            }          
-//            if (d==0) throw new Exception("Không tồn tại mã quỹ");
-//            home.edi(x, vitri);
-//            JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công!");
-//            this.dispose();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, e.getMessage());
-//        }
+        try {
+            x.setTenBan(txtTenBan.getText());
+            x.setMaQuy(txtMaQuy.getText());
+            int d=0;            
+            for(var z : new Dao().getSpend()){
+                if(z.getMaQuy().equalsIgnoreCase(x.getMaQuy())){
+                    d=-1;
+                    break;
+                }
+            }          
+            if (d==0) throw new Exception("Không tồn tại mã quỹ");
+            home.editBan(x, vitri);
+            JOptionPane.showMessageDialog(rootPane, "Chỉnh sửa thành công!");
+            this.dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
