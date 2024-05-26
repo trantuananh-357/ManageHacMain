@@ -8,6 +8,7 @@ public class ThanhVien implements Serializable{
     private String maTV, tenTV, khoa, chuyenNghanh, ban, ngaySinh, gioiTinh, email, sdt, chucDanh, maBan;
 
     public ThanhVien() {
+        
     }
 
     public ThanhVien(String maTV, String tenTV, String khoa, String chuyenNghanh, String ban, String ngaySinh, String gioiTinh, String email, String sdt, String chucDanh, String maBan) {
