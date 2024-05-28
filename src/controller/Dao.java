@@ -28,9 +28,9 @@ public class Dao {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             // String url=
             // "jdbc:sqlserver://LAPTOP-S4TAUB50\\SQLEXPRESS:1433;databaseName=HacClub;trustServerCertificate=true";
-            // String url=
-            // "jdbc:sqlserver://DESKTOP-35N6B48\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
-            String url = "jdbc:sqlserver://TUANANHVU\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
+             String url=
+             "jdbc:sqlserver://DESKTOP-35N6B48\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
+//            String url = "jdbc:sqlserver://TUANANHVU\\SQLEXPRESS:1433;databaseName=HacClub;encrypt=true;trustServerCertificate=true";
             String username = "sa";
             String password = "123456789";
             conn = DriverManager.getConnection(url, username, password);
@@ -480,7 +480,7 @@ public class Dao {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Spend
     public boolean addSpend(Quy a) {
-        String sql = "INSERT INTO tblQuy(maQuy, tenHD, thoiGian, chiPhi, tongQuy)" + "VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO tblQuy(maQuy, tenQuy, thoiGian, chiPhi, tongQuy)" + "VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, a.getMaQuy());
