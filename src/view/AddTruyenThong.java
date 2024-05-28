@@ -1,5 +1,8 @@
 package view;
 
+import Model.Ban;
+import Model.Ban;
+import Model.Ban;
 import Model.HoatDong;
 import Model.Quy;
 import controller.Dao;
@@ -8,6 +11,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 public class AddTruyenThong extends javax.swing.JDialog {
@@ -15,6 +21,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
     private TrangChu home;
 
     ArrayList<HoatDong> dsHDTT = new Dao().getMedia();
+
     public AddTruyenThong(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -23,6 +30,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
     }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -46,7 +54,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
         txtthoiGian = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtMaBan = new javax.swing.JTextField();
+        cmbBan = new javax.swing.JComboBox<>();
 
         jLabel5.setText("jLabel5");
 
@@ -95,7 +103,9 @@ public class AddTruyenThong extends javax.swing.JDialog {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("THÊM SỰ KIỆN - TRUYỀN THÔNG");
 
-        jLabel2.setText("Mã ban:");
+        jLabel2.setText("Ban");
+
+        cmbBan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -112,11 +122,11 @@ public class AddTruyenThong extends javax.swing.JDialog {
                         .addGap(175, 175, 175)
                         .addComponent(ThemBtn))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(305, 305, 305)
+                        .addGap(307, 307, 307)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(cmbBan, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -154,7 +164,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtMaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(77, 77, 77)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ThemBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,23 +211,25 @@ public class AddTruyenThong extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void HuyBobtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HuyBobtnActionPerformed
+    private void HuyBobtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_HuyBobtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_HuyBobtnActionPerformed
+    }// GEN-LAST:event_HuyBobtnActionPerformed
 
-    private void ThemBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThemBtnActionPerformed
+    private void ThemBtnActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_ThemBtnActionPerformed
         // TODO add your handling code here:
         HoatDong tt = new HoatDong();
         try {
-            if (dsHDTT.isEmpty()) {tt.setMaHD("HD1");} else {
+            if (dsHDTT.isEmpty()) {
+                tt.setMaHD("HD1");
+            } else {
                 String ma = "HD" + (dsHDTT.size() + 1);
                 tt.setMaHD(ma);
             }
             String ten = txttenSK.getText();
             String ngay = txtthoiGian.getText();
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date tg = null;         
+            Date tg = null;
             tt.setTenHD(txttenSK.getText());
             tt.setLoaiHD("Hoat dong truyen thong");
             tt.setDiaDiem(txtdiaDiem.getText());
@@ -226,10 +238,14 @@ public class AddTruyenThong extends javax.swing.JDialog {
             tt.setSoThanhVien(Integer.parseInt(txtSL.getText()));
             tt.setKinhPhi(Double.parseDouble(txtchiPhi.getText()));
             tt.setDanhGia(txtDG.getText());
-            tt.setMaBan(txtMaBan.getText());
+            Ban seletedBan = (Ban) cmbBan.getSelectedItem();
+            String maBan = seletedBan.getMaBan();
+            String tenBan = seletedBan.getTenBan();
+            tt.setMaBan(maBan);
+            tt.setTenBan(tenBan);
             boolean flag = true;
             int maxLength = 50;
-            
+
             if (ten.length() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Không được để trống Tên sự kiện");
                 flag = false;
@@ -253,19 +269,23 @@ public class AddTruyenThong extends javax.swing.JDialog {
                 this.dispose();
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Lỗi do: " + e.getMessage());
+            JOptionPane.showMessageDialog(this, "Lỗi do: " + e.getMessage());
         }
-    }//GEN-LAST:event_ThemBtnActionPerformed
+    }// GEN-LAST:event_ThemBtnActionPerformed
 
-    private void txtmoTaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmoTaActionPerformed
+    private void txtmoTaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtmoTaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtmoTaActionPerformed
+    }// GEN-LAST:event_txtmoTaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -275,16 +295,20 @@ public class AddTruyenThong extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddTruyenThong.class.getName()).log(java.util.logging.Level.SEVERE, null,
+                    ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+        // </editor-fold>
+        // </editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(() -> {
@@ -302,6 +326,7 @@ public class AddTruyenThong extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton HuyBobtn;
     private javax.swing.JButton ThemBtn;
+    private javax.swing.JComboBox<String> cmbBan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -314,7 +339,6 @@ public class AddTruyenThong extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtDG;
-    private javax.swing.JTextField txtMaBan;
     private javax.swing.JTextField txtSL;
     private javax.swing.JTextField txtchiPhi;
     private javax.swing.JTextField txtdiaDiem;

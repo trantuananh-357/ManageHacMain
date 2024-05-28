@@ -2,7 +2,7 @@ package Model;
 
 import java.io.Serializable;
 
-public class Ban implements Serializable{
+public class Ban implements Serializable {
 
     private String maBan, tenBan, maQuy;
     private int soLuongTv;
@@ -19,13 +19,13 @@ public class Ban implements Serializable{
         this.tongQuy = tongQuy;
     }
 
-
     public String getMaBan() {
         return maBan;
     }
 
-    public void setMaBan(String maBan) throws Exception{
-        if(maBan.trim().length() == 0) throw new Exception("Mã ban không được để trống");
+    public void setMaBan(String maBan) throws Exception {
+        if (maBan.trim().length() == 0)
+            throw new Exception("Mã ban không được để trống");
         this.maBan = maBan;
     }
 
@@ -33,8 +33,9 @@ public class Ban implements Serializable{
         return tenBan;
     }
 
-    public void setTenBan(String tenBan) throws Exception{
-        if(tenBan.trim().length() == 0) throw new Exception("Tên ban không được để trống");
+    public void setTenBan(String tenBan) throws Exception {
+        if (tenBan.trim().length() == 0)
+            throw new Exception("Tên ban không được để trống");
         this.tenBan = tenBan;
     }
 
@@ -58,9 +59,14 @@ public class Ban implements Serializable{
         return maQuy;
     }
 
-    public void setMaQuy(String maQuy) throws Exception{
-        if(maQuy.trim().length() == 0) throw new Exception("Mã quỹ không được để trống");
+    public void setMaQuy(String maQuy) throws Exception {
+        if (maQuy.trim().length() == 0)
+            throw new Exception("Mã quỹ không được để trống");
         this.maQuy = maQuy;
     }
-    
+
+    @Override
+    public String toString() {
+        return tenBan;
+    }
 }
